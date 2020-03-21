@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddz.car.mapper.CarMapper">
+    <select id="listCar" parameterType="com.ddz.car.domain.qo.CarQO" resultType="com.ddz.car.domain.dto.CarDTO">
+        select
+            cnumber,
+            brand,
+            cname,
+            price,
+            seatnumber,
+            carphoto,
+            state
+        from car
+        where state='1'
+        <if test="brand!=null and brand!=''">
+            and brand=#{brand}
+        </if>
+        <if test="seatnumber!=null and seatnumber!='0'.toString()">
+            and seatnumber=#{seatnumber}
+        </if>
+    </select>
+</mapper>
