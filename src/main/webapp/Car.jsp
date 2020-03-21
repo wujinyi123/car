@@ -86,7 +86,7 @@
                         <div class="Text">价格区间：</div>
                         <div class="InputDiv">
                             <i class=" iconfont icon-xiala"></i>
-                            <select name="price" class="phoneInput">
+                            <select name="price" class="phoneInput" id="price">
                                 <option value="0">全部</option>
                                 <option value="1">100以下</option>
                                 <option value="2">100-200</option>
@@ -99,7 +99,7 @@
                         <div class="Text">座位：</div>
                         <div class="InputDiv">
                             <i class=" iconfont icon-xiala"></i>
-                            <select name="seatnumber" class="phoneInput">
+                            <select name="seatnumber" class="phoneInput" id="seatnumber">
                                 <option value="0">全部</option>
                                 <option value="2座">2座</option>
                                 <option value="4座">4座</option>
@@ -110,7 +110,8 @@
                     </div>
                     <div class="PublicBtnIcon Color1Btn fr">
                         <i class="iconfont icon-icon-chaxun"></i>
-                        <input name="selectPlan" type="button" value="查询" onclick="selectCar(1)">
+                        <input name="selectPlan" type="button" value="查询" onclick="pageCar()">
+<%--                        <input name="selectPlan" type="button" value="查询" onclick="selectCar(1)">--%>
                     </div>
                 </div>
             </form>
@@ -461,11 +462,13 @@ debugger;
     }
 
     function pageCar() {
+        price = $("#price option:selected").val();
+        seatnumber = $("#seatnumber option:selected").val();
         layui.use('table', function () {
             var table = layui.table;
             table.render({
                 elem: '#cars',
-                url: '/car/pageCar',
+                url: '/car/pageCar?price='+price+'&seatnumber='+seatnumber,
                 page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'], //自定义分页布局
                     limits: [5, 10, 15],

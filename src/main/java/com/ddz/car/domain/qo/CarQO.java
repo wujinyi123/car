@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class CarQO extends PageQO {
     private String brand;
     private String seatnumber;
+    private String price;
 }

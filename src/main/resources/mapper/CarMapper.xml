@@ -19,5 +19,12 @@
         <if test="seatnumber!=null and seatnumber!='0'.toString()">
             and seatnumber=#{seatnumber}
         </if>
+        <choose>
+            <when test="price=='1'.toString()">and price &lt; 100</when>
+            <when test="price=='2'.toString()">and price &gt;= 100 and price &lt; 200</when>
+            <when test="price=='3'.toString()">and price &gt;= 200 and price &lt; 300</when>
+            <when test="price=='4'.toString()">and price &gt;= 300</when>
+            <otherwise></otherwise>
+        </choose>
     </select>
 </mapper>
