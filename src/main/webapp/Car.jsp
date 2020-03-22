@@ -75,60 +75,11 @@
             <div class="PublicPointToAgeText">
                 <span class="span1">租赁车辆管理  </span> <span class="span2">汽车信息列表</span>
             </div>
-            <!--查询-->
-            <%--<form action="" method="get" id="form1">
-                <div class="InquireBox clearfix">
 
 
-                    <input type="hidden" name="brand" class="phoneInput">
-
-                    <div class="InquireleftBox">
-                        <div class="Text">价格区间：</div>
-                        <div class="InputDiv">
-                            <i class=" iconfont icon-xiala"></i>
-                            <select name="price" class="phoneInput" id="price">
-                                <option value="0">全部</option>
-                                <option value="1">100以下</option>
-                                <option value="2">100-200</option>
-                                <option value="3">200-300</option>
-                                <option value="4">300以上</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="InquireleftBox">
-                        <div class="Text">座位：</div>
-                        <div class="InputDiv">
-                            <i class=" iconfont icon-xiala"></i>
-                            <select name="seatnumber" class="phoneInput" id="seatnumber">
-                                <option value="0">全部</option>
-                                <option value="2座">2座</option>
-                                <option value="4座">4座</option>
-                                <option value="5座">5座</option>
-                                <option value="7座">7座</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="PublicBtnIcon Color1Btn fr">
-                        <i class="iconfont icon-icon-chaxun"></i>
-                        <input name="selectPlan" type="button" value="查询" onclick="pageCar()">
-&lt;%&ndash;                        <input name="selectPlan" type="button" value="查询" onclick="selectCar(1)">&ndash;%&gt;
-                    </div>
-                </div>
-            </form>--%>
-
-
-            <!--表添加-->
+            <!--内容白框-->
             <div class="InquireTableBox">
-                <div class="headbox">
-                    <div class="headboxtext">
-                        <span class="span1" style="font-weight: bold">汽车信息列表</span>
-                    </div>
-                    <div class="PublicBtnIcon Color2Btn fr Js_edit">
-                        <i class="iconfont icon-changyongtubiao-mianxing-"></i>
-                        <span>添加</span>
-                    </div>
-                </div>
-
+                <iframe allowtransparency="true" frameborder="0" width="180" height="36" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=0&v=0&d=3&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=71267&w=180&h=36&align=center"></iframe>
                 <!--查询到的表格-->
 
                 <div class="InquireSelectTable">
@@ -161,95 +112,19 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="layui-form-item">
+                        <div class="layui-form-item layui-inline">
                             <div class="layui-input-block">
-                                <button class="layui-btn layui-btn-blue" lay-submit lay-filter="formCars">查询</button>
+                                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formCars">查询</button>
+                            </div>
+                        </div>
+                        <div class="layui-inline" style="margin-bottom: 15px;">
+                            <div class="layui-input-block" >
+                                <button class="layui-btn layui-btn-normal" lay-filter="">添加</button>
                             </div>
                         </div>
                     </form>
                     <table id="cars"></table>
-                    <%--<table class="PublicTableCss">
-                        <thead>
-                        <tr>
-                            <td>汽车展示</td>
-                            <td>汽车编号</td>
-                            <td>品牌</td>
-                            <td>车辆名称</td>
-                            <td>单价</td>
-                            <td>座位数</td>
-                            <td>操作</td>
-                        </tr>
-                        </thead>
-                        <tbody id="addList">
-                        <c:forEach items="${carList.list}" var="pro">
-                            <tr>
-                                <td class="id">
-                                        ${pro.carphoto}
-                                </td>
-                                <td>
-                                        ${pro.cnumber}
-                                </td>
-                                <td>
-                                        ${pro.brand}
-                                </td>
-                                <td>
-                                        ${pro.cname}
-                                </td>
-                                <td>
-                                        ${pro.price}
-                                </td>
-                                <td>
-                                        ${pro.seatnumber}
-                                </td>
-                                <td>
-                                    <button class='PublicTableBtnIcon Color3Btn edit edits' onclick='add(this)'>
-                                        <i class='iconfont icon-tubiaozhizuomobanyihuifu-'></i>
-                                        <span>编辑</span>
-                                    </button>
-                                    <div class='PublicTableBtnIcon Color4Btn Js_delete'>
-                                        <i class='iconfont icon-shanchu'></i>
-                                        <span>删除</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>--%>
-
                 </div>
-                <!--分页-->
-                <%--<div class="PageNumber">
-                    <div class="fenye">
-                        <div class="NumbersBox">
-                            <div class="LeftArrow " <c:if test="${(carList.pageNum-1)<=1}"> class="disable"</c:if>>
-                                <a href="pageSelectCar?pn=${carList.pageNum-1}">上一页</a>
-                            </div>
-                            <ul>
-                                <li <c:if
-                                        test="${carList.pageNum-2<=0}"> style="display:none;list-style-type:none;" </c:if>>
-                                    <a href="pageSelectCar?pn=${carList.pageNum-2}">${carList.pageNum-2}</a></li>
-                                <li <c:if
-                                        test="${carList.pageNum-1<=0}"> style="display:none;list-style-type:none;" </c:if>>
-                                    <a href="pageSelectCar?pn=${carList.pageNum-1}">${carList.pageNum-1}</a></li>
-                                <li <c:if test="${carList.pageNum==carList.pageNum}"> class="active" </c:if>><a
-                                        href="pageSelectCar?pn=${carList.pageNum}">${carList.pageNum}</a></li>
-                                <li <c:if
-                                        test="${carList.pageNum+1>carList.pages}"> style="display:none;list-style-type:none;" </c:if>>
-                                    <a href="pageSelectCar?pn=${carList.pageNum+1}">${carList.pageNum+1}</a></li>
-                                <li <c:if
-                                        test="${carList.pageNum+2>carList.pages}"> style="display:none;list-style-type:none;" </c:if>>
-                                    <a href="pageSelectCar?pn=${carList.pageNum+2}">${carList.pageNum+2}</a></li>
-                            </ul>
-                            <div class="RightArrow " <c:if
-                                    test="${(carList.pageNum+1)>=carList.pages}"> class="disable"</c:if>>
-                                <a href="ppageSelectCar?pn=${carList.pageNum+1}">下一页</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>--%>
-
-
             </div>
         </div>
 
@@ -322,42 +197,36 @@
     </div>
 </div>
 <!--模态框编辑产品信息浮层-->
-<div class="PublicFloatBox adduser update">
+<div class="PublicFloatBox adduser update updatefloat">
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
-                <span>编辑/查看</span>
+                <span>编辑车辆信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
-                <form action="updateFloatProductPlan">
-                    <div class="f_alonedivs">
-                        计划ID：<input type="text" name="id" class="fid" readonly unselectable="on">
+                <form method="get" id="form1">
+                    <div class="f_alonediv">
+                        汽车编号：<input type="text" name="cnumber" id="u_cnumber" class="upCarFloat" readonly="readonly">
                     </div>
                     <div class="f_alonediv">
-                        计划编号：<input type="text" name="plan_seq" class="fplanseq" readonly unselectable="on">
-                    </div>
-                    <div class="f_alonediv">
-                        订单编号：<input type="text" name="productOrder.order_seq" class="forderseq">
-                    </div>
-                    <div class="f_alonediv">
-                        产品：<input type="text" name="product_id" class="fproductid">
+                        汽车品牌：<input type="text" name="brand" id="u_brand" class="upCarFloat" readonly="readonly">
                     </div>
                     <div class="shebeixulie">
-                        计划数量：<input type="text" name="plan_count" class="fplancount">
+                        汽车名称：<input type="text" name="cname" id="u_cname" class="upCarFloat" readonly="readonly">
                     </div>
                     <div class="shebeixulie">
-                        交货日期：<input type="text" name="delivery_date" class="fdeliverydate">
+                        租借单价：<input type="text" name="price" id="u_price" class="upCarFloat">
                     </div>
                     <div class="f_alonediv">
-                        计划开始日期：<input type="text" name="plan_start_date" class="fplanstartdate">
+                        车辆座位：<input type="text" name="seatnumber" id="u_seatnumber" class="upCarFloat" readonly="readonly">
                     </div>
                     <div class="f_alonediv">
-                        计划结束日期：<input type="text" name="plan_end_date" class="fplanenddate">
+                        图片地址：<input type="text" name="carphoto" id="u_carphoto" class="addCarFloat" readonly="readonly">
                     </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
-                            <input type="submit" value="提交">
+                            <input type="button" value="确定" onclick="updateCar()">
                         </div>
                         <div class="publicf_btn2 fr Js_closeBtn">
                             <input type="button" value="取消">
@@ -374,33 +243,32 @@
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
-                <span>添加生产计划</span>
+                <span>添加汽车信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
                 <form action="insertFloatProductPlan" method="get" id="form2">
                     <div class="f_alonediv">
-                        计划编号：<input type="text" name="plan_seq" class="fplanseq">
+                        汽车编号：<input type="text" name="a_cnumber" class="addCarFloat">
                     </div>
                     <div class="f_alonediv">
-
-                        订单编号：<input type="text" name="productOrder.order_seq" class="forderseq">
+                        汽车品牌：<input type="text" name="a_brand" class="addCarFloat">
                     </div>
                     <div class="shebeixulie">
-                        计划数量：<input type="text" name="plan_count" class="fplancount">
+                        汽车名称：<input type="text" name="a_cname" class="addCarFloat">
                     </div>
                     <div class="shebeixulie">
-                        交货日期：<input type="text" name="delivery_date" class="fdeliverydate">
+                        租借单价：<input type="text" name="a_price" class="addCarFloat">
                     </div>
                     <div class="f_alonediv">
-                        计划开始日期：<input type="text" name="plan_start_date" class="fplanstartdate">
-                    </div>
-                    <div class="f_alonediv">
-                        计划结束日期：<input type="text" name="plan_end_date" class="fplanenddate">
+                        车辆座位：<input type="text" name="a_seatnumber" class="addCarFloat">
                     </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
-                            <input type="submit" name="yes" value="确定">
+                            <input type="submit" value="提交">
+                        </div>
+                        <div class="publicf_btn2 fr Js_closeBtn">
+                            <input type="button" value="取消">
                         </div>
                     </div>
                 </form>
@@ -413,7 +281,7 @@
 </div>
 </div>
 
-<!-- 弹框的查看和编辑数值-->
+<!-- 弹框的编辑数值-->
 <script type="text/javascript">
 
     /* 添加品牌字符串 */
@@ -431,73 +299,33 @@
             $("brand").attr("value", result);
         }
     }
-
-    function add(_this) {
-        var id = $(_this).parent().parent().children(".id").text();
-        if ($(_this).attr("id") == "chakan") {
-            $(".check").fadeIn(200);
-        } else {
-            $(".update").fadeIn(200);
-        }
-        $.ajax({
-            type: "get",
-            url: "selecteditFloatProductPlan",
-            data: "id=" + id,//$("#div1 #form1").serialize(),
-            success: function (productPlan) {
-                $(".fid").val(productPlan.id);
-                $(".fplanseq").val(productPlan.plan_seq);
-                $(".forderseq").val(productPlan.productOrder.order_seq);
-                $(".fproductid").val(productPlan.product_id);
-                $(".fplancount").val(productPlan.plan_count);
-                $(".fdeliverydate").val(productPlan.delivery_date);
-                $(".fplanstartdate").val(productPlan.plan_start_date);
-                $(".fplanenddate").val(productPlan.plan_end_date);
-            }
-        });
-
-    };
-
-    /* 页面查询的语句  */
-    function selectCar() {
-        //var pn = ${carList.pageNum==null?1:carList.pageNum};
-        $.ajax({
-            type: "get",
-            url: "/selectCar?brand=宝马&price=0&seatnumber=0",
-            //data: $("#form1").serialize(),
-            success: function (carList) {
-                //alert(carList.list[1].id);
-                // var size = carList.list.length;
-                // //alert(size);
-                // var html = [];
-                // for (var i = 0; i < size; i++) {
-                //     html.push("<tr><td class='id'>" + (carList.list[i].carphoto == null ? '' : carList.list[i].carphoto) + "</td>");
-                //     html.push("<td>" + (carList.list[i].cnumber == 0 ? '' : carList.list[i].cnumber) + "</td>");
-                //     html.push("<td>" + (carList.list[i].brand == null ? '' : carList.list[i].brand) + "</td>");
-                //     html.push("<td>" + (carList.list[i].cname == null ? '' : carList.list[i].cname) + "</td>");
-                //     html.push("<td>" + (carList.list[i].price == 0 ? '' : carList.list[i].price) + "</td>");
-                //     html.push("<td>" + (carList.list[i].seatnumber == null ? '' : carList.list[i].seatnumber) + "</td>");
-                //     html.push("<td><div id='bianji' class='PublicTableBtnIcon Color3Btn'><button class='PublicTableBtnIcon Color3Btn edit edits' onclick='add(this)'><i class='iconfont icon-tubiaozhizuomobanyihuifu-'></i><span>编辑</span></button></div><div class='PublicTableBtnIcon Color4Btn Js_delete'><i class='iconfont icon-shanchu'></i><span>删除</span></div></td></tr>");
-                // }
-                $("#addList").html('');
-                // $("#addList").append(html.join());
-debugger;
-                for (i=0; i<3; i++) {
-                    tr = $('<tr>');
-                    tr.append('<td>111</td>');
-                    tr.append('<td>222</td>');
-                    tr.append('<td>333</td>');
-                    tr.append('<td>444</td>');
-                    tr.append('<td>555</td>');
-                    tr.append('<td>666</td>');
-                    tr.append('<td>777</td>');
-                    $("#addList").append(tr);
-                }
-
-            }
-        })
-
+    // 赋值到编辑框
+    function add(cnumber,carphoto,brand,cname,price,seatnumber) {
+        $(".update").fadeIn(200);
+        $("#u_cnumber").attr("value",cnumber);
+        $("#u_carphoto").attr("value",carphoto);
+        $("#u_brand").attr("value",brand);
+        $("#u_cname").attr("value",cname);
+        $("#u_price").attr("value",price);
+        $("#u_seatnumber").attr("value",seatnumber);
     }
 
+    // 提交修改的值
+    function updateCar(){
+        $.ajax({
+            type: "POST",
+            url: "/car/updateCar",
+            data: $("#form1").serialize(),
+            success: function (result) {
+                $(".updatefloat").fadeOut(200);
+                if (result!=0){
+                    pageCar();
+                }
+            }
+        });
+    }
+
+    // 分页查询
     function pageCar() {
         price = $("#price option:selected").val();
         seatnumber = $("#seatnumber option:selected").val();
@@ -510,7 +338,7 @@ debugger;
                 page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'], //自定义分页布局
                     limits: [5, 10, 15],
-                    limit: 5,
+                    limit: 10,
                     curr: 1,
                     groups: 5, //只显示 1 个连续页码
                     first: '首页',
@@ -525,7 +353,7 @@ debugger;
                 cols: [[
                     {
                         field: 'carphoto', title: '汽车展示', sort: true,templet:function (data) {
-                            return '<img src="'+data.carphoto+'" style="height:50px;" onclick="bigImg(\''+data.carphoto+'\')">';
+                            return '<img src="'+data.carphoto+'" style="height:100%;width: 100%;margin-left: 30px;" onclick="bigImg(\''+data.carphoto+'\')">';
                         }
                     },
                     {field: 'cnumber', title: '汽车编号', sort: true},
@@ -535,8 +363,8 @@ debugger;
                     {field: 'seatnumber', title: '座位数', sort: true},
                     {
                         field: 'id', title: '操作', sort: true, templet: function (data) {
-                            return '<a class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="doCar(\''+data.cnumber+'\')"><i class="iconfont icon-edit"></i>操作</a>'
-                                +'<a class="layui-btn layui-btn-mini links_edit" href="#" onclick="deleteCar(\''+data.cnumber+'\')"><i class="iconfont icon-edit"></i>删除</a>';
+                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\',\''+data.carphoto+'\',\''+data.brand+'\',\''+data.cname+'\',\''+data.price+'\',\''+data.seatnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
+                                +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
                         }
                     }
                 ]]
@@ -544,25 +372,42 @@ debugger;
         });
     }
     pageCar();
-    function doCar(cnumber) {
-        alert(cnumber);
+    //询问是否删除
+    function todel(cnumber) {
+        var msg = "您真的确定要删除吗？\n\n请确认！";
+        if (confirm(msg)==true){
+            deleteCar(cnumber);
+        }else{
+            return false;
+        }
     }
+    //删除按钮
     function deleteCar(cnumber) {
-        alert(cnumber);
+        $.ajax({
+            type: "POST",
+            url: "/car/deleteCar?cnumber="+cnumber,
+            dataType: "json",
+            success: function (result) {
+                if (result!=0){
+                    pageCar();
+                }
+            }
+        })
     }
+    //放大图片
     function bigImg(imgSrc) {
         layui.use('layer', function () {
             layui.layer.alert('<img id="ddz" src="'+imgSrc+'" style="height: 250px; margin:0px auto;">');
         });
     }
-
+    //点击查询跳转
     layui.use(['form','layer'], function(){
         layui.form.on('submit(formCars)', function(dataForm) {
             pageCar();
             return false;
         });
     });
-
+//获取码表值
     $.ajax({
         type: "POST",
         url: "/car/getCarMb",
@@ -585,7 +430,7 @@ debugger;
         error:function(e){
             console.log(e);
         }
-    });
+    })
 </script>
 </body>
 </html>

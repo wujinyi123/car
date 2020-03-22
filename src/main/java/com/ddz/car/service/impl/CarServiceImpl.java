@@ -2,6 +2,7 @@ package com.ddz.car.service.impl;
 
 import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
+import com.ddz.car.domain.qo.CarUpdateQO;
 import com.ddz.car.mapper.CarMapper;
 import com.ddz.car.service.CarService;
 import org.springframework.stereotype.Service;
@@ -28,4 +29,16 @@ public class CarServiceImpl implements CarService {
         map.put("seatnumber",carMapper.listSeatnumber());
         return map;
     }
+
+    @Override
+    public int deleteCar(int cnumber) {
+        return  carMapper.deleteCar(cnumber);
+    }
+
+    @Override
+    public int updateCar(CarUpdateQO carUpdateQO) {
+        return carMapper.updateCar(carUpdateQO);
+    }
+
+
 }

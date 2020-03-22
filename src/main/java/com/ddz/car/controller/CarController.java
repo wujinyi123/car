@@ -4,6 +4,7 @@ import com.ddz.car.common.ResponseData;
 import com.ddz.car.common.ResponseDataUtil;
 import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
+import com.ddz.car.domain.qo.CarUpdateQO;
 import com.ddz.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,16 +33,33 @@ public class CarController {
         return ResponseDataUtil.buildSuccess(carService.listCar(carQO));
     }
 
+//    分页查询
     @RequestMapping("/pageCar")
     @ResponseBody
     public ResponseData<List<CarDTO>> pageCar(CarQO carQO) {
         return ResponseDataUtil.buildSuccess(carService.listCar(carQO),carQO);
     }
 
+//    码表查询
     @RequestMapping("/getCarMb")
     @ResponseBody
     public ResponseData<Map<String,List<String>>> getCarMb() {
         return ResponseDataUtil.buildSuccess(carService.getCarMb());
     }
 
+    //     删除操作
+    @RequestMapping("/deleteCar")
+    @ResponseBody
+    public int deleteCar(int cnumber){
+        int result = carService.deleteCar(cnumber);
+        return result;
+    }
+
+    //    更新操作
+    @RequestMapping("/updateCar")
+    @ResponseBody
+    public int updateCar(CarUpdateQO carUpdateQO){
+        int result = carService.updateCar(carUpdateQO);
+        return result;
+    }
 }

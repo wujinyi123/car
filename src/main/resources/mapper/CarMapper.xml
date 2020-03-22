@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ddz.car.mapper.CarMapper">
+    <!--分页查询-->
     <select id="listCar" parameterType="com.ddz.car.domain.qo.CarQO" resultType="com.ddz.car.domain.dto.CarDTO">
         select
             cnumber,
@@ -28,6 +29,7 @@
         </choose>
     </select>
 
+    <!--码表-->
     <select id="listBrand" resultType="string">
         select distinct brand from car where state='1' order by brand
     </select>
@@ -35,4 +37,15 @@
     <select id="listSeatnumber" resultType="string">
         select distinct seatnumber from car where state='1' order by seatnumber
     </select>
+
+    <!--删除操作-->
+    <update id="deleteCar" parameterType="int">
+        update Car set state = 0 where cnumber = #{cnumber}
+    </update>
+
+    <!--更新车辆信息-->
+    <update id="updateCar" parameterType="com.ddz.car.domain.qo.CarUpdateQO">
+        update Car set price = #{price} where cnumber = #{cnumber}
+    </update>
+
 </mapper>
