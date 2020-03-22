@@ -551,17 +551,6 @@ debugger;
         alert(cnumber);
     }
     function bigImg(imgSrc) {
-        /*layui.use('layer', function () {
-            layui.layer.open({
-                type: 2,
-                title: '图片展示',
-                // shadeClose: false,
-                // shade: false,
-                //maxmin: true, //开启最大化最小化按钮
-                area: ['25%', '40%'],
-                content: '/img.html?imgSrc='+imgSrc
-            });
-        });*/
         layui.use('layer', function () {
             layui.layer.alert('<img id="ddz" src="'+imgSrc+'" style="height: 250px; margin:0px auto;">');
         });
