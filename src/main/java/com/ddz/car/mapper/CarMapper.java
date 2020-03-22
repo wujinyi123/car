@@ -9,4 +9,8 @@ import java.util.List;
 @Mapper
 public interface CarMapper {
     List<CarDTO> listCar(CarQO carQO);
+
+    List<String> listBrand();
+
+    List<String> listSeatnumber();
 }

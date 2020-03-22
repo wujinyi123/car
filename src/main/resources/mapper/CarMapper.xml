@@ -13,7 +13,7 @@
             state
         from car
         where state='1'
-        <if test="brand!=null and brand!=''">
+        <if test="brand!=null and brand!='0'.toString()">
             and brand=#{brand}
         </if>
         <if test="seatnumber!=null and seatnumber!='0'.toString()">
@@ -26,5 +26,13 @@
             <when test="price=='4'.toString()">and price &gt;= 300</when>
             <otherwise></otherwise>
         </choose>
+    </select>
+
+    <select id="listBrand" resultType="string">
+        select distinct brand from car where state='1' order by brand
+    </select>
+
+    <select id="listSeatnumber" resultType="string">
+        select distinct seatnumber from car where state='1' order by seatnumber
     </select>
 </mapper>

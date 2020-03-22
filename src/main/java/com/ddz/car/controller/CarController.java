@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/car")
@@ -35,4 +36,11 @@ public class CarController {
     public ResponseData<List<CarDTO>> pageCar(CarQO carQO) {
         return ResponseDataUtil.buildSuccess(carService.listCar(carQO),carQO);
     }
+
+    @RequestMapping("/getCarMb")
+    @ResponseBody
+    public ResponseData<Map<String,List<String>>> getCarMb() {
+        return ResponseDataUtil.buildSuccess(carService.getCarMb());
+    }
+
 }

@@ -76,7 +76,7 @@
                 <span class="span1">租赁车辆管理  </span> <span class="span2">汽车信息列表</span>
             </div>
             <!--查询-->
-            <form action="" method="get" id="form1">
+            <%--<form action="" method="get" id="form1">
                 <div class="InquireBox clearfix">
 
 
@@ -111,10 +111,12 @@
                     <div class="PublicBtnIcon Color1Btn fr">
                         <i class="iconfont icon-icon-chaxun"></i>
                         <input name="selectPlan" type="button" value="查询" onclick="pageCar()">
-<%--                        <input name="selectPlan" type="button" value="查询" onclick="selectCar(1)">--%>
+&lt;%&ndash;                        <input name="selectPlan" type="button" value="查询" onclick="selectCar(1)">&ndash;%&gt;
                     </div>
                 </div>
-            </form>
+            </form>--%>
+
+
             <!--表添加-->
             <div class="InquireTableBox">
                 <div class="headbox">
@@ -130,6 +132,41 @@
                 <!--查询到的表格-->
 
                 <div class="InquireSelectTable">
+                    <form class="layui-form layui-card-body" method="POST" id="examForm">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">价格</label>
+                            <div class="layui-input-inline">
+                                <select name="price" id="price" lay-verify="required" lay-search="">
+                                    <option value="0">全部</option>
+                                    <option value="1">100以下</option>
+                                    <option value="2">100-200</option>
+                                    <option value="3">200-300</option>
+                                    <option value="4">300以上</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">座位</label>
+                            <div class="layui-input-inline">
+                                <select name="seatnumber" id="seatnumber" lay-verify="required" lay-search="">
+                                    <option value="0">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">品牌</label>
+                            <div class="layui-input-inline">
+                                <select name="brand" id="brand" lay-verify="required" lay-search="">
+                                    <option value="0">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-blue" lay-submit lay-filter="formCars">查询</button>
+                            </div>
+                        </div>
+                    </form>
                     <table id="cars"></table>
                     <%--<table class="PublicTableCss">
                         <thead>
@@ -464,11 +501,12 @@ debugger;
     function pageCar() {
         price = $("#price option:selected").val();
         seatnumber = $("#seatnumber option:selected").val();
+        brand = $("#brand option:selected").val();
         layui.use('table', function () {
             var table = layui.table;
             table.render({
                 elem: '#cars',
-                url: '/car/pageCar?price='+price+'&seatnumber='+seatnumber,
+                url: '/car/pageCar?price='+price+'&seatnumber='+seatnumber+'&brand='+brand,
                 page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'], //自定义分页布局
                     limits: [5, 10, 15],
@@ -508,6 +546,37 @@ debugger;
     function deleteCar(cnumber) {
         alert(cnumber);
     }
+
+    layui.use(['form','layer'], function(){
+        layui.form.on('submit(formCars)', function(dataForm) {
+            pageCar();
+            return false;
+        });
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/car/getCarMb",
+        dataType: "json",
+        success: function(data){
+            layui.use('form', function(){
+                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                arr = data.data.seatnumber;
+                for (i=0; i<arr.length; i++) {
+                    $('#seatnumber').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
+                }
+                arr = data.data.brand;
+                for (i=0; i<arr.length; i++) {
+                    $('#brand').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
+                }
+                form.render();
+            });
+
+        },
+        error:function(e){
+            console.log(e);
+        }
+    });
 </script>
 </body>
 </html>
