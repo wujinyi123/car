@@ -551,7 +551,7 @@ debugger;
         alert(cnumber);
     }
     function bigImg(imgSrc) {
-        layui.use('layer', function () {
+        /*layui.use('layer', function () {
             layui.layer.open({
                 type: 2,
                 title: '图片展示',
@@ -561,6 +561,9 @@ debugger;
                 area: ['25%', '40%'],
                 content: '/img.html?imgSrc='+imgSrc
             });
+        });*/
+        layui.use('layer', function () {
+            layui.layer.alert('<img id="ddz" src="'+imgSrc+'" style="height: 250px; margin:0px auto;">');
         });
     }
 
