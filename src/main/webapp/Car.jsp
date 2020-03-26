@@ -230,14 +230,20 @@
         }
     }
     // 赋值到编辑框
-    function add(cnumber,carphoto,brand,cname,price,seatnumber) {
-        $(".update").fadeIn(200);
-        $("#u_cnumber").attr("value",cnumber);
-        $("#u_carphoto").attr("value",carphoto);
-        $("#u_brand").attr("value",brand);
-        $("#u_cname").attr("value",cname);
-        $("#u_price").attr("value",price);
-        $("#u_seatnumber").attr("value",seatnumber);
+    function add(cnumber) {
+        $.ajax({
+            type: "POST",
+            url: "/car/addFloatCar?cnumber="+cnumber,
+            success: function (result) {
+                $(".update").fadeIn(200);
+                $("#u_cnumber").attr("value",result.cnumber);
+                $("#u_carphoto").attr("value",result.carphoto);
+                $("#u_brand").attr("value",result.brand);
+                $("#u_cname").attr("value",result.cname);
+                $("#u_price").attr("value",result.price);
+                $("#u_seatnumber").attr("value",result.seatnumber);
+            }
+        });
     }
 
     // 提交修改的值
@@ -293,7 +299,7 @@
                     {field: 'seatnumber', title: '座位数', sort: true},
                     {
                         field: 'id', title: '操作', sort: true, templet: function (data) {
-                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\',\''+data.carphoto+'\',\''+data.brand+'\',\''+data.cname+'\',\''+data.price+'\',\''+data.seatnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
+                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
                                 +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
                         }
                     }

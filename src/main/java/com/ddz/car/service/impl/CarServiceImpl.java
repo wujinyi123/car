@@ -40,5 +40,10 @@ public class CarServiceImpl implements CarService {
         return carMapper.updateCar(carUpdateQO);
     }
 
+    @Override
+    public CarDTO addFloatCar(int cnumber) {
+        return carMapper.addFloatCar(cnumber);
+    }
+
 
 }

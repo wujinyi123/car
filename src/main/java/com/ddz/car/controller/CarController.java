@@ -62,4 +62,11 @@ public class CarController {
         int result = carService.updateCar(carUpdateQO);
         return result;
     }
+
+    //    浮窗信息添加
+    @RequestMapping("/addFloatCar")
+    @ResponseBody
+    public CarDTO addFloatCar(int cnumber){
+        return carService.addFloatCar(cnumber);
+    }
 }

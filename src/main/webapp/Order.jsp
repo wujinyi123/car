@@ -144,6 +144,7 @@
     </div>
 </div>
 
+
 <!--模态框编辑产品信息浮层-->
 <div class="PublicFloatBox adduser update updatefloat">
     <div class="kongfx">
@@ -197,31 +198,25 @@
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
-                <span>添加汽车信息</span>
+                <span>添加订单信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
                 <form method="get" id="form2">
                     <div class="f_alonediv">
-                        汽车编号：<input type="text" name="cnumber" id="a_cnumber" class="CarFloat">
+                        汽车编号：<input type="text" name="cnumber" id="a_cnumber" class="CarFloat" required lay-verify="required">
                     </div>
                     <div class="f_alonediv">
-                        用户编号：<input type="text" name="unumber" id="a_unumber" class="CarFloat">
+                        用户编号：<input type="text" name="unumber" id="a_unumber" class="CarFloat" required lay-verify="required">
                     </div>
                     <div class="f_alonediv">
-                        地址信息：<input type="text" name="address" id="a_address" class="CarFloat">
+                        地址信息：<input type="text" name="address" id="a_address" class="CarFloat" required lay-verify="required">
                     </div>
                     <div class="f_alonediv">
-                        租赁单价：<input type="text" name="uprice" id="a_uprice" class="CarFloat">
+                        租赁单价：<input type="text" name="uprice" id="a_uprice" class="CarFloat" required lay-verify="required">
                     </div>
                     <div class="f_alonediv">
-                        租赁总价：<input type="text" name="tprice" id="a_tprice" class="CarFloat">
-                    </div>
-                    <div class="f_alonediv">
-                        取车时间：<input type="date" name="pcartime" id="a_pcartime" class="CarFloat">
-                    </div>
-                    <div class="f_alonediv">
-                        还车时间：<input type="date" name="rcartime" id="a_rcartime" class="CarFloat">
+                        取车时间：<input type="date" name="pcartime" id="a_pcartime" class="CarFloat" required lay-verify="required">
                     </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
@@ -371,7 +366,7 @@
         $.ajax({
             type: "POST",
             url: "/order/insertOrder",
-            data: $("#form2").serialize(),
+            data: $("#form2").serializeArray(),
             success: function (result) {
                 $(".insertFloat").fadeOut(200);
                 if (result!=0){

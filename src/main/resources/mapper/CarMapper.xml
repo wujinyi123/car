@@ -48,4 +48,15 @@
         update Car set price = #{price} where cnumber = #{cnumber}
     </update>
 
+    <select id="addFloatCar" parameterType="int" resultType="com.ddz.car.domain.dto.CarDTO">
+        select
+        cnumber,
+        brand,
+        cname,
+        price,
+        seatnumber,
+        carphoto,
+        state from car where cnumber=#{cnumber}
+    </select>
+
 </mapper>

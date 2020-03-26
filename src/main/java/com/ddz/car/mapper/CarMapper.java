@@ -20,4 +20,7 @@ public interface CarMapper {
 
 //    更新车辆信息
     int updateCar(CarUpdateQO carUpdateQO);
+
+//    浮窗信息添加
+    CarDTO addFloatCar(int cnumber);
 }

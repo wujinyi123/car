@@ -17,4 +17,6 @@ public interface CarService {
 
     //    更新车辆信息
     int updateCar(CarUpdateQO carUpdateQO);
+
+    CarDTO addFloatCar(int cnumber);
 }

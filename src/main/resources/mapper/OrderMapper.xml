@@ -60,7 +60,10 @@
             address = #{address},
         </if>
         <if test="uprice!='' and uprice!=null">
-           uprice = #{uprice}
+           uprice = #{uprice},
+        </if>
+        <if test="rcartime!='' and rcartime!=null">
+          tprice =  #{uprice}*DATEDIFF(#{rcartime},#{pcartime})
         </if>
         where onumber = #{onumber}
     </update>
@@ -68,14 +71,7 @@
     <!--插入订单信息-->
     <insert id="insertOrder" parameterType="com.ddz.car.domain.qo.OrderInsertQO">
         insert into Orders (cnumber,unumber,address,uprice,tprice,pcartime,rcartime,ostate,state)
-        values (#{cnumber},#{unumber},#{address},#{uprice},#{tprice},#{pcartime},#{rcartime},
-        <if test="rcartime==null">
-            0,
-        </if>
-        <if test="rcartime!=null">
-            1,
-        </if>
-        1)
+        values (#{cnumber},#{unumber},#{address},#{uprice},#{uprice}*DATEDIFF(#{rcartime},#{pcartime}),#{pcartime},#{rcartime},0,1)
     </insert>
 
 </mapper>
