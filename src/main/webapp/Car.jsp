@@ -83,7 +83,7 @@
                 <!--查询到的表格-->
 
                 <div class="InquireSelectTable">
-                    <form class="layui-form layui-card-body" method="POST" id="examForm">
+                    <form class="layui-form" method="POST" id="examForm">
                         <div class="layui-inline">
                             <label class="layui-form-label">价格</label>
                             <div class="layui-input-inline">
@@ -112,13 +112,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="layui-form-item layui-inline">
-                            <div class="layui-input-block">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
                                 <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formCars">查询</button>
                             </div>
                         </div>
-                        <div class="layui-inline" style="margin-bottom: 15px;">
-                            <div class="layui-input-block" >
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline" >
                                 <input type="button" class="layui-btn layui-btn-normal" onclick="addFloat()" value="添加"></input>
                             </div>
                         </div>
@@ -236,12 +238,12 @@
             url: "/car/addFloatCar?cnumber="+cnumber,
             success: function (result) {
                 $(".update").fadeIn(200);
-                $("#u_cnumber").attr("value",result.cnumber);
-                $("#u_carphoto").attr("value",result.carphoto);
-                $("#u_brand").attr("value",result.brand);
-                $("#u_cname").attr("value",result.cname);
-                $("#u_price").attr("value",result.price);
-                $("#u_seatnumber").attr("value",result.seatnumber);
+                $("#u_cnumber").val(result.cnumber);
+                $("#u_carphoto").val(result.carphoto);
+                $("#u_brand").val(result.brand);
+                $("#u_cname").val(result.cname);
+                $("#u_price").val(result.price);
+                $("#u_seatnumber").val(result.seatnumber);
             }
         });
     }
@@ -292,13 +294,13 @@
                             return '<img src="'+data.carphoto+'" style="height:100%;width: 100%;margin-left: 30px;" onclick="bigImg(\''+data.carphoto+'\')">';
                         }
                     },
-                    {field: 'cnumber', title: '汽车编号', sort: true},
-                    {field: 'brand', title: '品牌', sort: true},
+                    {field: 'cnumber',width:125, title: '汽车编号', sort: true},
+                    {field: 'brand',width:100, title: '品牌', sort: true},
                     {field: 'cname', title: '车辆名称', sort: true},
-                    {field: 'price', title: '单价', sort: true},
-                    {field: 'seatnumber', title: '座位数', sort: true},
+                    {field: 'price',width:80, title: '单价', sort: true},
+                    {field: 'seatnumber', width:120, title: '座位数', sort: true},
                     {
-                        field: 'id', title: '操作', sort: true, templet: function (data) {
+                        field: 'id',width:180, title: '操作', sort: true, templet: function (data) {
                             return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
                                 +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
                         }

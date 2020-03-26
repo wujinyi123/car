@@ -83,7 +83,7 @@
                 <!--查询到的表格-->
 
                 <div class="InquireSelectTable">
-                    <form class="layui-form layui-card-body" method="POST" id="examForm">
+                    <form class="layui-form" method="POST" id="examForm">
                         <div class="layui-inline">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
@@ -116,12 +116,14 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="layui-form-item layui-inline" style="margin-left: -15px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
                             <div class="layui-input-block">
                                 <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formUsers">查询</button>
                             </div>
                         </div>
-                        <div class="layui-inline" style="margin-bottom: 15px;margin-left: -15px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
                             <div class="layui-input-block" >
                                 <input type="button" class="layui-btn layui-btn-normal" onclick="addFloat()" value="添加"></input>
                             </div>
@@ -253,14 +255,12 @@
     // 赋值到编辑框
     function add(unumber,uname,accountnumber,blacklist,flag,email) {
         $(".update").fadeIn(200);
-        $("#u_unumber").attr("value",unumber);
-        $("#u_uname").attr("value",uname);
-        $("#u_accountnumber").attr("value",accountnumber);
-        $("#u_blacklist").attr("value",blacklist);
-        $("#u_blacklist").val(blacklist);
-        $("#u_flag").attr("value",flag);
+        $("#u_unumber").val(unumber);
+        $("#u_uname").val(uname);
+        $("#u_accountnumber").val(accountnumber);
+        $('#u_blacklist').val(blacklist);
         $("#u_flag").val(flag);
-        $("#u_email").attr("value",email);
+        $("#u_email").val(email);
     }
 
     // 提交修改的值
@@ -305,14 +305,14 @@
                     }
                 },
                 cols: [[
-                    {field: 'unumber', title: '用户编号', sort: true},
-                    {field: 'uname', title: '用户名称', sort: true},
-                    {field: 'accountnumber', title: '用户账号', sort: true},
+                    {field: 'unumber',width:115, title: '用户编号', sort: true},
+                    {field: 'uname',width:115, title: '用户名称', sort: true},
+                    {field: 'accountnumber',width:125, title: '用户账号', sort: true},
                     {field: 'email', title: '用户邮箱', sort: true},
-                    {field: 'flag', title: '用户类型', sort: true},
-                    {field: 'blacklist', title: '黑名单状态', sort: true},
+                    {field: 'flag',width:115, title: '用户类型', sort: true},
+                    {field: 'blacklist',width:120, title: '黑名单状态', sort: true},
                     {
-                        field: 'id', title: '操作', sort: true, templet: function (data) {
+                        field: 'id',width:180, title: '操作', sort: true, templet: function (data) {
                             return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.unumber+'\',\''+data.uname+'\',\''+data.accountnumber+'\',\''+data.blacklist+'\',\''+data.flag+'\',\''+data.email+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
                                 +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.unumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
                         }
