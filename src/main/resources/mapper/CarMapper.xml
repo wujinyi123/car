@@ -5,13 +5,13 @@
     <!--分页查询-->
     <select id="listCar" parameterType="com.ddz.car.domain.qo.CarQO" resultType="com.ddz.car.domain.dto.CarDTO">
         select
-            cnumber,
-            brand,
-            cname,
-            price,
-            seatnumber,
-            carphoto,
-            state
+        cnumber,
+        brand,
+        cname,
+        price,
+        seatnumber,
+        carphoto,
+        state
         from car
         where state='1'
         <if test="brand!=null and brand!='0'.toString()">

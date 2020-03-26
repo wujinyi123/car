@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddz.car.mapper.UserMapper">
+    <!--分页查询-->
+    <select id="listUser" parameterType="com.ddz.car.domain.qo.UserQO" resultType="com.ddz.car.domain.dto.UserDTO">
+        select
+        unumber,
+        uname,
+        accountnumber,
+        password,
+        blacklist,
+        flag,
+        email,
+        state
+        from Users
+        where state='1'
+        <if test="uname!='' and uname!=null">
+            and uname like concat('%',#{uname},'%')
+        </if>
+        <if test="blacklist=='0'.toString()">
+            and blacklist=#{blacklist}
+        </if>
+        <if test="blacklist=='1'.toString()">
+            and blacklist=#{blacklist}
+        </if>
+        <if test="flag=='0'.toString()">
+            and flag=#{flag}
+        </if>
+        <if test="flag=='1'.toString()">
+            and flag=#{flag}
+        </if>
+        <if test="email!='' and email!=null">
+            and email=#{email}
+        </if>
+    </select>
+
+    <!--删除订单信息-->
+    <update id="deleteUser" parameterType="int">
+        update Users set state = 0 where unumber = #{unumber}
+    </update>
+
+    <!--修改订单信息-->
+    <update id="updateUser" parameterType="com.ddz.car.domain.qo.UserUpdateQO">
+        update Users set
+        <if test="uname!='' and uname!=null">
+            uname = #{uname},
+        </if>
+        <if test="blacklist!='' and blacklist!=null">
+            blacklist = #{blacklist},
+        </if>
+        <if test="flag!='' and flag!=null">
+            flag = #{flag},
+        </if>
+        <if test="email!='' and email!=null">
+            email = #{email}
+        </if>
+        where unumber = #{unumber}
+    </update>
+
+    <!--插入订单信息-->
+    <insert id="insertUser" parameterType="com.ddz.car.domain.qo.UserInsertQO">
+        insert into Users (unumber,uname,accountnumber,password,blacklist,flag,email,state)
+        values (#{unumber},#{uname},#{accountnumber},#{password},0,#{flag},#{email},1)
+    </insert>
+
+</mapper>

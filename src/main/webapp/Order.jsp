@@ -19,7 +19,7 @@
     <script src="js/plan.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="layui/layui.js"></script>
-    <title>汽车管理</title>
+    <title>订单管理</title>
 </head>
 
 <body>
@@ -57,10 +57,10 @@
     <!--左侧-->
     <div class="leftBox">
         <ul>
-            <a href="#">
+            <a href="Car.jsp">
                 <li><i class="iconfont icon-tubiaozhizuomobanyihuifu-"></i><span>车辆管理</span></li>
             </a>
-            <a href="Order.jsp">
+            <a href="#">
                 <li><i class="iconfont icon-app_icons--"></i><span>订单管理</span></li>
             </a>
             <a href="User.jsp">
@@ -73,7 +73,7 @@
         <div class="PublicContentBox">
             <!--公用指向页面名字-->
             <div class="PublicPointToAgeText">
-                <span class="span1">租赁车辆管理  </span> <span class="span2">汽车信息列表</span>
+                <span class="span1">租赁订单管理  </span> <span class="span2">汽车订单信息列表</span>
             </div>
 
 
@@ -85,9 +85,27 @@
                 <div class="InquireSelectTable">
                     <form class="layui-form layui-card-body" method="POST" id="examForm">
                         <div class="layui-inline">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="uname" id="uname"  placeholder="输入用户名关键字" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">车名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="cname" id="cname"  placeholder="输入车辆名关键字" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">地址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="address" id="address"  placeholder="输入地址名关键字" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">价格</label>
                             <div class="layui-input-inline">
-                                <select name="price" id="price" lay-verify="required" lay-search="">
+                                <select name="uprice" id="uprice" lay-verify="required" lay-search="">
                                     <option value="0">全部</option>
                                     <option value="1">100以下</option>
                                     <option value="2">100-200</option>
@@ -96,23 +114,8 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">座位</label>
-                            <div class="layui-input-inline">
-                                <select name="seatnumber" id="seatnumber" lay-verify="required" lay-search="">
-                                    <option value="0">全部</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">品牌</label>
-                            <div class="layui-input-inline">
-                                <select name="brand" id="brand" lay-verify="required" lay-search="">
-                                    <option value="0">全部</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-form-item layui-inline">
+
+                        <div class="layui-form-item layui-inline" >
                             <div class="layui-input-block">
                                 <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formCars">查询</button>
                             </div>
@@ -122,8 +125,18 @@
                                 <input type="button" class="layui-btn layui-btn-normal" onclick="addFloat()" value="添加"></input>
                             </div>
                         </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                                <select name="ostate" id="ostate" lay-verify="required" lay-search="">
+                                    <option value="empty">全部</option>
+                                    <option value="1">已还车</option>
+                                    <option value="0">未还车</option>
+                                </select>
+                            </div>
+                        </div>
                     </form>
-                    <table id="cars"></table>
+                    <table id="orders"></table>
                 </div>
             </div>
         </div>
@@ -136,32 +149,38 @@
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
-                <span>编辑车辆信息</span>
+                <span>编辑订单信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
                 <form method="get" id="form1">
                     <div class="f_alonediv">
-                        汽车编号：<input type="text" name="cnumber" id="u_cnumber" class="CarFloat" readonly="readonly">
+                        订单编号：<input type="text" name="onumber" id="u_onumber" class="CarFloat" readonly="readonly">
                     </div>
                     <div class="f_alonediv">
-                        汽车品牌：<input type="text" name="brand" id="u_brand" class="CarFloat" readonly="readonly">
+                        汽车编号：<input type="text" name="cnumber" id="u_cnumber" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        汽车名称：<input type="text" name="cname" id="u_cname" class="CarFloat" readonly="readonly">
+                        用户编号：<input type="text" name="unumber" id="u_unumber" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        租借单价：<input type="text" name="price" id="u_price" class="CarFloat">
+                        地址信息：<input type="text" name="address" id="u_address" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        车辆座位：<input type="text" name="seatnumber" id="u_seatnumber" class="CarFloat" readonly="readonly">
+                        租赁单价：<input type="text" name="uprice" id="u_uprice" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        图片地址：<input type="text" name="carphoto" id="u_carphoto" class="CarFloat" readonly="readonly">
+                        租赁总价：<input type="text" name="tprice" id="u_tprice" class="CarFloat" readonly="readonly">
+                    </div>
+                    <div class="f_alonediv">
+                        取车时间：<input type="text" name="pcartime" id="u_pcartime" class="CarFloat" readonly="readonly">
+                    </div>
+                    <div class="f_alonediv">
+                        还车时间：<input type="text" name="rcartime" id="u_rcartime" class="CarFloat" readonly="readonly">
                     </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
-                            <input type="button" value="确定" onclick="updateCar()">
+                            <input type="button" value="确定" onclick="updateOrder()">
                         </div>
                         <div class="publicf_btn2 fr Js_closeBtn">
                             <input type="button" value="取消">
@@ -174,7 +193,7 @@
 </div>
 
 <!-- 模态框添加浮层中的数据 -->
-<div class="PublicFloatBox insert insertFloat1" style="display: none;">
+<div class="PublicFloatBox insert insertFloat" style="display: none;">
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
@@ -184,21 +203,29 @@
             <div class="f_content">
                 <form method="get" id="form2">
                     <div class="f_alonediv">
-                        汽车品牌：<input type="text" name="brand" id="a_brand" class="CarFloat">
+                        汽车编号：<input type="text" name="cnumber" id="a_cnumber" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        汽车名称：<input type="text" name="cname" id="a_cname" class="CarFloat">
+                        用户编号：<input type="text" name="unumber" id="a_unumber" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        租借单价：<input type="text" name="price" id="a_price" class="CarFloat">
+                        地址信息：<input type="text" name="address" id="a_address" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        车辆座位：<input type="text" name="seatnumber" id="a_seatnumber" class="CarFloat">
+                        租赁单价：<input type="text" name="uprice" id="a_uprice" class="CarFloat">
                     </div>
-
+                    <div class="f_alonediv">
+                        租赁总价：<input type="text" name="tprice" id="a_tprice" class="CarFloat">
+                    </div>
+                    <div class="f_alonediv">
+                        取车时间：<input type="date" name="pcartime" id="a_pcartime" class="CarFloat">
+                    </div>
+                    <div class="f_alonediv">
+                        还车时间：<input type="date" name="rcartime" id="a_rcartime" class="CarFloat">
+                    </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
-                            <input type="button" value="提交" onclick="insertCar()">
+                            <input type="button" value="提交" onclick="insertOrder()">
                         </div>
                         <div class="publicf_btn2 fr Js_closeBtn">
                             <input type="button" value="取消">
@@ -230,41 +257,45 @@
         }
     }
     // 赋值到编辑框
-    function add(cnumber,carphoto,brand,cname,price,seatnumber) {
+    function add(onumber,cnumber,unumber,address,uprice,tprice,pcartime,rcartime) {
         $(".update").fadeIn(200);
+        $("#u_onumber").attr("value",onumber);
         $("#u_cnumber").attr("value",cnumber);
-        $("#u_carphoto").attr("value",carphoto);
-        $("#u_brand").attr("value",brand);
-        $("#u_cname").attr("value",cname);
-        $("#u_price").attr("value",price);
-        $("#u_seatnumber").attr("value",seatnumber);
+        $("#u_unumber").attr("value",unumber);
+        $("#u_address").attr("value",address);
+        $("#u_uprice").attr("value",uprice);
+        $("#u_tprice").attr("value",tprice);
+        $("#u_pcartime").attr("value",pcartime);
+        $("#u_rcartime").attr("value",rcartime);
     }
 
     // 提交修改的值
-    function updateCar(){
+    function updateOrder(){
         $.ajax({
             type: "POST",
-            url: "/car/updateCar",
+            url: "/order/updateOrder",
             data: $("#form1").serialize(),
             success: function (result) {
                 $(".updatefloat").fadeOut(200);
                 if (result!=0){
-                    pageCar();
+                    pageOrder();
                 }
             }
         });
     }
 
     // 分页查询
-    function pageCar() {
-        price = $("#price option:selected").val();
-        seatnumber = $("#seatnumber option:selected").val();
-        brand = $("#brand option:selected").val();
+    function pageOrder() {
+        uname = $("#uname").val();
+        cname = $("#cname").val();
+        address = $("#address").val();
+        uprice = $("#uprice option:selected").val();
+        ostate = $("#ostate option:selected").val();
         layui.use('table', function () {
             var table = layui.table;
             table.render({
-                elem: '#cars',
-                url: '/car/pageCar?price='+price+'&seatnumber='+seatnumber+'&brand='+brand,
+                elem: '#orders',
+                url: '/order/pageOrder?uname='+uname+'&cname='+cname+'&address='+address+'&uprice='+uprice+'&ostate='+ostate,
                 page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'], //自定义分页布局
                     limits: [5, 10, 15],
@@ -281,94 +312,73 @@
                     }
                 },
                 cols: [[
-                    {
-                        field: 'carphoto', title: '汽车展示', sort: true,templet:function (data) {
-                            return '<img src="'+data.carphoto+'" style="height:100%;width: 100%;margin-left: 30px;" onclick="bigImg(\''+data.carphoto+'\')">';
-                        }
-                    },
-                    {field: 'cnumber', title: '汽车编号', sort: true},
-                    {field: 'brand', title: '品牌', sort: true},
-                    {field: 'cname', title: '车辆名称', sort: true},
-                    {field: 'price', title: '单价', sort: true},
-                    {field: 'seatnumber', title: '座位数', sort: true},
+                    {field: 'onumber', title: '订单编号', sort: true},
+                    {field: 'cname', title: '汽车名称', sort: true},
+                    {field: 'uname', title: '用户名称', sort: true},
+                    {field: 'address', title: '地址', sort: true},
+                    {field: 'uprice', title: '单价', sort: true},
+                    {field: 'tprice', title: '总价', sort: true},
+                    {field: 'pcartime', title: '取车时间', sort: true},
+                    {field: 'rcartime', title: '还车时间', sort: true},
+                    {field: 'ostate', title: '订单状态', sort: true},
                     {
                         field: 'id', title: '操作', sort: true, templet: function (data) {
-                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\',\''+data.carphoto+'\',\''+data.brand+'\',\''+data.cname+'\',\''+data.price+'\',\''+data.seatnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
-                                +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
+                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.onumber+'\',\''+data.cnumber+'\',\''+data.unumber+'\',\''+data.address+'\',\''+data.uprice+'\',\''+data.tprice+'\',\''+data.pcartime+'\',\''+data.rcartime+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
+                                +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.onumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
                         }
                     }
                 ]]
             });
         });
     }
-    pageCar();
+    pageOrder();
     //询问是否删除
-    function todel(cnumber) {
+    function todel(onumber) {
         var msg = "您真的确定要删除吗？\n\n请确认！";
         if (confirm(msg)==true){
-            deleteCar(cnumber);
+            deleteOrder(onumber);
         }else{
             return false;
         }
     }
     //删除按钮
-    function deleteCar(cnumber) {
+    function deleteOrder(onumber) {
         $.ajax({
             type: "POST",
-            url: "/car/deleteCar?cnumber="+cnumber,
+            url: "/order/deleteOrder?onumber="+onumber,
             dataType: "json",
             success: function (result) {
                 if (result!=0){
-                    pageCar();
+                    pageOrder();
                 }
             }
         })
     }
-    //放大图片
-    function bigImg(imgSrc) {
-        layui.use('layer', function () {
-            layui.layer.alert('<img id="ddz" src="'+imgSrc+'" style="height: 250px; margin:0px auto;">');
-        });
-    }
     //点击查询跳转
     layui.use(['form','layer'], function(){
         layui.form.on('submit(formCars)', function(dataForm) {
-            pageCar();
+            pageOrder();
             return false;
         });
     });
-//获取码表值
-    $.ajax({
-        type: "POST",
-        url: "/car/getCarMb",
-        dataType: "json",
-        success: function(data){
-            layui.use('form', function(){
-                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-                arr = data.data.seatnumber;
-                for (i=0; i<arr.length; i++) {
-                    $('#seatnumber').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
-                }
-                arr = data.data.brand;
-                for (i=0; i<arr.length; i++) {
-                    $('#brand').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
-                }
-                form.render();
-            });
-
-        },
-        error:function(e){
-            console.log(e);
-        }
-    })
 
     // 点击打开插入框
     function addFloat(){
-        $(".insertFloat1").fadeIn(200);
+        $(".insertFloat").fadeIn(200);
     }
     // 插入车辆数据
-    function insertCar(){
-
+    function insertOrder(){
+        $.ajax({
+            type: "POST",
+            url: "/order/insertOrder",
+            data: $("#form2").serialize(),
+            success: function (result) {
+                $(".insertFloat").fadeOut(200);
+                if (result!=0){
+                    pageOrder();
+                }
+            }
+        });
     }
 </script>
 </body>

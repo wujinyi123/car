@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddz.car.mapper.OrderMapper">
+    <!--分页查询-->
+    <select id="listOrder" parameterType="com.ddz.car.domain.qo.OrderQO" resultType="com.ddz.car.domain.dto.OrderDTO">
+        select
+        o.onumber,
+        o.cnumber,
+        o.unumber,
+        cs.cname,
+        u.uname,
+        o.address,
+        o.uprice,
+        o.tprice,
+        o.pcartime,
+        o.rcartime,
+        o.ostate
+        from Car cs,Orders o,Users u
+        where o.state='1' and o.cnumber=cs.cnumber and o.unumber=u.unumber
+        <if test="cname!='' and cname!=null">
+            and cs.cname like concat('%',#{cname},'%')
+        </if>
+        <if test="uname!='' and uname!=null">
+            and u.uname like concat('%',#{uname},'%')
+        </if>
+        <if test="address!='' and address!=null">
+            and o.address like concat('%',#{address},'%')
+        </if>
+        <if test="ostate=='0'.toString() and ostate!='' and ostate!=null">
+            and o.ostate=#{ostate}
+        </if>
+        <if test="ostate=='1'.toString() and ostate!='' and ostate!=null">
+            and o.ostate=#{ostate}
+        </if>
+        <choose>
+            <when test="uprice=='1'.toString()">and o.uprice &lt; 100</when>
+            <when test="uprice=='2'.toString()">and o.uprice &gt;= 100 and o.uprice &lt; 200</when>
+            <when test="uprice=='3'.toString()">and o.uprice &gt;= 200 and o.uprice &lt; 300</when>
+            <when test="uprice=='4'.toString()">and o.uprice &gt;= 300</when>
+            <otherwise></otherwise>
+        </choose>
+    </select>
+
+    <!--删除订单信息-->
+    <update id="deleteOrder" parameterType="int">
+        update Orders set state = 0 where onumber = #{onumber}
+    </update>
+
+    <!--修改订单信息-->
+    <update id="updateOrder" parameterType="com.ddz.car.domain.qo.OrderUpdateQO">
+        update Orders set
+        <if test="cnumber!='' and cnumber!=null">
+            cnumber = #{cnumber},
+        </if>
+        <if test="unumber!='' and unumber!=null">
+            unumber = #{unumber},
+        </if>
+        <if test="address!='' and address!=null">
+            address = #{address},
+        </if>
+        <if test="uprice!='' and uprice!=null">
+           uprice = #{uprice}
+        </if>
+        where onumber = #{onumber}
+    </update>
+
+    <!--插入订单信息-->
+    <insert id="insertOrder" parameterType="com.ddz.car.domain.qo.OrderInsertQO">
+        insert into Orders (cnumber,unumber,address,uprice,tprice,pcartime,rcartime,ostate,state)
+        values (#{cnumber},#{unumber},#{address},#{uprice},#{tprice},#{pcartime},#{rcartime},
+        <if test="rcartime==null">
+            0,
+        </if>
+        <if test="rcartime!=null">
+            1,
+        </if>
+        1)
+    </insert>
+
+</mapper>

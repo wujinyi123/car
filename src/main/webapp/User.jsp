@@ -19,7 +19,7 @@
     <script src="js/plan.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="layui/layui.js"></script>
-    <title>汽车管理</title>
+    <title>用户管理</title>
 </head>
 
 <body>
@@ -57,13 +57,13 @@
     <!--左侧-->
     <div class="leftBox">
         <ul>
-            <a href="#">
+            <a href="Car.jsp">
                 <li><i class="iconfont icon-tubiaozhizuomobanyihuifu-"></i><span>车辆管理</span></li>
             </a>
             <a href="Order.jsp">
                 <li><i class="iconfont icon-app_icons--"></i><span>订单管理</span></li>
             </a>
-            <a href="User.jsp">
+            <a href="#">
                 <li><i class="iconfont icon-weibiaoti1"></i><span>用户管理</span></li>
             </a>
         </ul>
@@ -73,7 +73,7 @@
         <div class="PublicContentBox">
             <!--公用指向页面名字-->
             <div class="PublicPointToAgeText">
-                <span class="span1">租赁车辆管理  </span> <span class="span2">汽车信息列表</span>
+                <span class="span1">用户管理  </span> <span class="span2">用户信息列表</span>
             </div>
 
 
@@ -85,45 +85,49 @@
                 <div class="InquireSelectTable">
                     <form class="layui-form layui-card-body" method="POST" id="examForm">
                         <div class="layui-inline">
-                            <label class="layui-form-label">价格</label>
+                            <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                                <select name="price" id="price" lay-verify="required" lay-search="">
-                                    <option value="0">全部</option>
-                                    <option value="1">100以下</option>
-                                    <option value="2">100-200</option>
-                                    <option value="3">200-300</option>
-                                    <option value="4">300以上</option>
+                                <input type="text" name="uname" id="uname"  placeholder="输入用户名关键字" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email" id="email"  placeholder="输入完整的邮箱号" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">黑名单</label>
+                            <div class="layui-input-inline">
+                                <select name="blacklist" id="blacklist" lay-verify="required" lay-search="">
+                                    <option value="empty">全部</option>
+                                    <option value="0">非黑名单</option>
+                                    <option value="1">黑名单</option>
                                 </select>
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">座位</label>
+                            <label class="layui-form-label">类型</label>
                             <div class="layui-input-inline">
-                                <select name="seatnumber" id="seatnumber" lay-verify="required" lay-search="">
-                                    <option value="0">全部</option>
+                                <select name="flag" id="flag" lay-verify="required" lay-search="">
+                                    <option value="all">全部</option>
+                                    <option value="0">管理员</option>
+                                    <option value="1">普通用户</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">品牌</label>
-                            <div class="layui-input-inline">
-                                <select name="brand" id="brand" lay-verify="required" lay-search="">
-                                    <option value="0">全部</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-form-item layui-inline">
+                        <div class="layui-form-item layui-inline" style="margin-left: -15px;">
                             <div class="layui-input-block">
-                                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formCars">查询</button>
+                                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formUsers">查询</button>
                             </div>
                         </div>
-                        <div class="layui-inline" style="margin-bottom: 15px;">
+                        <div class="layui-inline" style="margin-bottom: 15px;margin-left: -15px;">
                             <div class="layui-input-block" >
                                 <input type="button" class="layui-btn layui-btn-normal" onclick="addFloat()" value="添加"></input>
                             </div>
                         </div>
                     </form>
-                    <table id="cars"></table>
+                    <table id="users"></table>
                 </div>
             </div>
         </div>
@@ -136,32 +140,40 @@
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
-                <span>编辑车辆信息</span>
+                <span>编辑用户信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
                 <form method="get" id="form1">
                     <div class="f_alonediv">
-                        汽车编号：<input type="text" name="cnumber" id="u_cnumber" class="CarFloat" readonly="readonly">
+                        用户编号：<input type="text" name="unumber" id="u_unumber" class="CarFloat" readonly="readonly">
                     </div>
                     <div class="f_alonediv">
-                        汽车品牌：<input type="text" name="brand" id="u_brand" class="CarFloat" readonly="readonly">
+                        用户姓名：<input type="text" name="uname" id="u_uname" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        汽车名称：<input type="text" name="cname" id="u_cname" class="CarFloat" readonly="readonly">
+                        用户账号：<input type="text" name="accountnumber" id="u_accountnumber" class="CarFloat " readonly="readonly">
                     </div>
                     <div class="f_alonediv">
-                        租借单价：<input type="text" name="price" id="u_price" class="CarFloat">
+                        用户邮箱：<input type="text" name="email" id="u_email" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        车辆座位：<input type="text" name="seatnumber" id="u_seatnumber" class="CarFloat" readonly="readonly">
+                        名单状态：
+                        <select name="blacklist" id="u_blacklist" class="CarFloat">
+                            <option value="0">正常</option>
+                            <option value="1">黑名单</option>
+                        </select>
                     </div>
                     <div class="f_alonediv">
-                        图片地址：<input type="text" name="carphoto" id="u_carphoto" class="CarFloat" readonly="readonly">
+                        用户类型：
+                        <select name="flag" id="u_flag" class="CarFloat">
+                            <option value="0">管理员</option>
+                            <option value="1">普通用户</option>
+                        </select>
                     </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
-                            <input type="button" value="确定" onclick="updateCar()">
+                            <input type="button" value="确定" onclick="updateUser()">
                         </div>
                         <div class="publicf_btn2 fr Js_closeBtn">
                             <input type="button" value="取消">
@@ -174,31 +186,40 @@
 </div>
 
 <!-- 模态框添加浮层中的数据 -->
-<div class="PublicFloatBox insert insertFloat1" style="display: none;">
+<div class="PublicFloatBox insert insertFloat" style="display: none;">
     <div class="kongfx">
         <div class=" wid400">
             <div class="f_Head">
-                <span>添加汽车信息</span>
+                <span>添加用户信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
                 <form method="get" id="form2">
                     <div class="f_alonediv">
-                        汽车品牌：<input type="text" name="brand" id="a_brand" class="CarFloat">
+                        用户姓名：<input type="text" name="uname" id="a_uname" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        汽车名称：<input type="text" name="cname" id="a_cname" class="CarFloat">
+                        用户账号：<input type="text" name="accountnumber" id="a_accountnumber" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        租借单价：<input type="text" name="price" id="a_price" class="CarFloat">
+                        用户密码：<input type="password" name="password" id="a_password" class="CarFloat">
                     </div>
                     <div class="f_alonediv">
-                        车辆座位：<input type="text" name="seatnumber" id="a_seatnumber" class="CarFloat">
+                        再次输入：<input type="password" name="password2" id="a_password2" class="CarFloat">
                     </div>
-
+                    <div class="f_alonediv">
+                        用户邮箱：<input type="text" name="email" id="a_email" class="CarFloat">
+                    </div>
+                    <div class="f_alonediv">
+                        名单状态：
+                        <select name="flag" id="a_flag" class="CarFloat">
+                            <option value="0">管理员</option>
+                            <option value="1" selected>普通用户</option>
+                        </select>
+                    </div>
                     <div class="publicf_btn">
                         <div class="publicf_btn1">
-                            <input type="button" value="提交" onclick="insertCar()">
+                            <input type="button" value="提交" onclick="insertUser()">
                         </div>
                         <div class="publicf_btn2 fr Js_closeBtn">
                             <input type="button" value="取消">
@@ -230,41 +251,44 @@
         }
     }
     // 赋值到编辑框
-    function add(cnumber,carphoto,brand,cname,price,seatnumber) {
+    function add(unumber,uname,accountnumber,blacklist,flag,email) {
         $(".update").fadeIn(200);
-        $("#u_cnumber").attr("value",cnumber);
-        $("#u_carphoto").attr("value",carphoto);
-        $("#u_brand").attr("value",brand);
-        $("#u_cname").attr("value",cname);
-        $("#u_price").attr("value",price);
-        $("#u_seatnumber").attr("value",seatnumber);
+        $("#u_unumber").attr("value",unumber);
+        $("#u_uname").attr("value",uname);
+        $("#u_accountnumber").attr("value",accountnumber);
+        $("#u_blacklist").attr("value",blacklist);
+        $("#u_blacklist").val(blacklist);
+        $("#u_flag").attr("value",flag);
+        $("#u_flag").val(flag);
+        $("#u_email").attr("value",email);
     }
 
     // 提交修改的值
-    function updateCar(){
+    function updateUser(){
         $.ajax({
             type: "POST",
-            url: "/car/updateCar",
+            url: "/user/updateUser",
             data: $("#form1").serialize(),
             success: function (result) {
                 $(".updatefloat").fadeOut(200);
                 if (result!=0){
-                    pageCar();
+                    pageUser();
                 }
             }
         });
     }
 
     // 分页查询
-    function pageCar() {
-        price = $("#price option:selected").val();
-        seatnumber = $("#seatnumber option:selected").val();
-        brand = $("#brand option:selected").val();
+    function pageUser() {
+        uname = $("#uname").val();
+        blacklist = $("#blacklist").val();
+        email = $("#email").val();//在此处添加邮箱判断
+        flag = $("#flag").val();
         layui.use('table', function () {
             var table = layui.table;
             table.render({
-                elem: '#cars',
-                url: '/car/pageCar?price='+price+'&seatnumber='+seatnumber+'&brand='+brand,
+                elem: '#users',
+                url: '/user/pageUser?uname='+uname+'&blacklist='+blacklist+'&email='+email+'&flag='+flag,
                 page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'], //自定义分页布局
                     limits: [5, 10, 15],
@@ -281,94 +305,75 @@
                     }
                 },
                 cols: [[
-                    {
-                        field: 'carphoto', title: '汽车展示', sort: true,templet:function (data) {
-                            return '<img src="'+data.carphoto+'" style="height:100%;width: 100%;margin-left: 30px;" onclick="bigImg(\''+data.carphoto+'\')">';
-                        }
-                    },
-                    {field: 'cnumber', title: '汽车编号', sort: true},
-                    {field: 'brand', title: '品牌', sort: true},
-                    {field: 'cname', title: '车辆名称', sort: true},
-                    {field: 'price', title: '单价', sort: true},
-                    {field: 'seatnumber', title: '座位数', sort: true},
+                    {field: 'unumber', title: '用户编号', sort: true},
+                    {field: 'uname', title: '用户名称', sort: true},
+                    {field: 'accountnumber', title: '用户账号', sort: true},
+                    {field: 'email', title: '用户邮箱', sort: true},
+                    {field: 'flag', title: '用户类型', sort: true},
+                    {field: 'blacklist', title: '黑名单状态', sort: true},
                     {
                         field: 'id', title: '操作', sort: true, templet: function (data) {
-                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\',\''+data.carphoto+'\',\''+data.brand+'\',\''+data.cname+'\',\''+data.price+'\',\''+data.seatnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
-                                +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
+                            return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.unumber+'\',\''+data.uname+'\',\''+data.accountnumber+'\',\''+data.blacklist+'\',\''+data.flag+'\',\''+data.email+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
+                                +'<a id="delete" class="layui-btn layui-btn-danger layui-btn-mini links_edit" href="#" onclick="todel(\''+data.unumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>删除</a>';
                         }
                     }
                 ]]
             });
         });
     }
-    pageCar();
+    pageUser();
     //询问是否删除
-    function todel(cnumber) {
+    function todel(unumber) {
         var msg = "您真的确定要删除吗？\n\n请确认！";
         if (confirm(msg)==true){
-            deleteCar(cnumber);
+            deleteUser(unumber);
         }else{
             return false;
         }
     }
     //删除按钮
-    function deleteCar(cnumber) {
+    function deleteUser(unumber) {
         $.ajax({
             type: "POST",
-            url: "/car/deleteCar?cnumber="+cnumber,
+            url: "/user/deleteUser?unumber="+unumber,
             dataType: "json",
             success: function (result) {
                 if (result!=0){
-                    pageCar();
+                    pageUser();
                 }
             }
         })
     }
-    //放大图片
-    function bigImg(imgSrc) {
-        layui.use('layer', function () {
-            layui.layer.alert('<img id="ddz" src="'+imgSrc+'" style="height: 250px; margin:0px auto;">');
-        });
-    }
     //点击查询跳转
     layui.use(['form','layer'], function(){
-        layui.form.on('submit(formCars)', function(dataForm) {
-            pageCar();
+        layui.form.on('submit(formUsers)', function(dataForm) {
+            pageUser();
             return false;
         });
     });
-//获取码表值
-    $.ajax({
-        type: "POST",
-        url: "/car/getCarMb",
-        dataType: "json",
-        success: function(data){
-            layui.use('form', function(){
-                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-                arr = data.data.seatnumber;
-                for (i=0; i<arr.length; i++) {
-                    $('#seatnumber').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
-                }
-                arr = data.data.brand;
-                for (i=0; i<arr.length; i++) {
-                    $('#brand').append('<option value="'+arr[i]+'">'+arr[i]+'</option>');
-                }
-                form.render();
-            });
-
-        },
-        error:function(e){
-            console.log(e);
-        }
-    })
 
     // 点击打开插入框
     function addFloat(){
-        $(".insertFloat1").fadeIn(200);
+        $(".insertFloat").fadeIn(200);
     }
     // 插入车辆数据
-    function insertCar(){
-
+    function insertUser(){
+        if ( $("#a_password").val()!=$("#a_password2").val()){
+            alert("您两次输入的密码不一致！！！");
+            return false;
+            $(".insertFloat").fadeOut(200);
+        }
+        $.ajax({
+            type: "POST",
+            url: "/user/insertUser",
+            data: $("#form2").serialize(),
+            success: function (result) {
+                $(".insertFloat").fadeOut(200);
+                if (result!=0){
+                    pageUser();
+                }
+            }
+        });
     }
 </script>
 </body>
