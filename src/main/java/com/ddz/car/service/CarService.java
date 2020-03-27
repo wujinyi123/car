@@ -4,6 +4,7 @@ import com.ddz.car.common.ResultEnums;
 import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
+import com.ddz.car.domain.qo.InsertCarQO;
 
 import java.util.List;
 import java.util.Map;
@@ -19,4 +20,11 @@ public interface CarService {
     int updateCar(CarUpdateQO carUpdateQO);
 
     CarDTO addFloatCar(int cnumber);
+
+    /**
+     * 添加车辆
+     * @param insertCarQO
+     * @return
+     */
+    int insertCar(InsertCarQO insertCarQO);
 }

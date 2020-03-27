@@ -3,6 +3,7 @@ package com.ddz.car.service.impl;
 import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
+import com.ddz.car.domain.qo.InsertCarQO;
 import com.ddz.car.mapper.CarMapper;
 import com.ddz.car.service.CarService;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,16 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDTO addFloatCar(int cnumber) {
         return carMapper.addFloatCar(cnumber);
+    }
+
+    /**
+     * 添加车辆
+     * @param insertCarQO
+     * @return
+     */
+    @Override
+    public int insertCar(InsertCarQO insertCarQO) {
+        return carMapper.insertCar(insertCarQO);
     }
 
 

@@ -5,16 +5,22 @@ import com.ddz.car.common.ResponseDataUtil;
 import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
+import com.ddz.car.domain.qo.InsertCarQO;
 import com.ddz.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
 @Controller
+@Validated
 @RequestMapping("/car")
 public class CarController {
     @Autowired
@@ -68,5 +74,16 @@ public class CarController {
     @ResponseBody
     public CarDTO addFloatCar(int cnumber){
         return carService.addFloatCar(cnumber);
+    }
+
+    /**
+     * 添加车辆
+     * @param insertCarQO
+     * @return
+     */
+    @PostMapping("/insertCar")
+    @ResponseBody
+    public int insertCar(@RequestBody @Valid InsertCarQO insertCarQO) {
+        return carService.insertCar(insertCarQO);
     }
 }

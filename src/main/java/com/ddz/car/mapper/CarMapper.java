@@ -3,6 +3,7 @@ package com.ddz.car.mapper;
 import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
+import com.ddz.car.domain.qo.InsertCarQO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -23,4 +24,11 @@ public interface CarMapper {
 
 //    浮窗信息添加
     CarDTO addFloatCar(int cnumber);
+
+    /**
+     * 添加车辆
+     * @param insertCarQO
+     * @return
+     */
+    int insertCar(InsertCarQO insertCarQO);
 }

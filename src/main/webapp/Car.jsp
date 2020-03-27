@@ -184,26 +184,36 @@
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
-                <form method="get" id="form2">
-                    <div class="f_alonediv">
-                        汽车品牌：<input type="text" name="brand" id="a_brand" class="CarFloat">
+                <form class="layui-form layui-card-body" method="POST" id="form2">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">品牌：</label>
+                        <div class="layui-input-block">
+                            <input type="text" style="width: 200px;" id="a_brand" name="a_brand" required  lay-verify="required" placeholder="请输入汽车品牌" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                    <div class="f_alonediv">
-                        汽车名称：<input type="text" name="cname" id="a_cname" class="CarFloat">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" style="width: 200px;" id="a_cname" name="a_cname" required  lay-verify="required" placeholder="请输入汽车名称" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                    <div class="f_alonediv">
-                        租借单价：<input type="text" name="price" id="a_price" class="CarFloat">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">单价：</label>
+                        <div class="layui-input-block">
+                            <input type="text" style="width: 200px;" id="a_price" name="a_price" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入租借单价" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                    <div class="f_alonediv">
-                        车辆座位：<input type="text" name="seatnumber" id="a_seatnumber" class="CarFloat">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">座位：</label>
+                        <div class="layui-input-block">
+                            <input type="text" style="width: 200px;" id="a_seatnumber" name="a_seatnumber" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入车辆座位" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
 
-                    <div class="publicf_btn">
-                        <div class="publicf_btn1">
-                            <input type="button" value="提交" onclick="insertCar()">
-                        </div>
-                        <div class="publicf_btn2 fr Js_closeBtn">
-                            <input type="button" value="取消">
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-blue" lay-submit lay-filter="insertCar">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
                 </form>
@@ -215,7 +225,41 @@
 
 <!-- 弹框的编辑数值-->
 <script type="text/javascript">
-
+    //新建car
+    layui.use(['form','layer'], function(){
+        layui.form.on('submit(insertCar)', function(dataForm){
+            var jsonData = {
+                brand:$('#a_brand').val(),
+                cname:$('#a_cname').val(),
+                price:$('#a_price').val(),
+                seatnumber:$('#a_seatnumber').val()+'座'
+            }
+            $.ajax({
+                type: "POST",
+                url: "/car/insertCar",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(jsonData),
+                success: function(data){
+                    if (data==1 || data=='1') {
+                        layui.use('layer', function () {
+                            layui.layer.alert('<span style="font-size:16px;">添加成功</span>', {icon: 1});
+                        });
+                    } else {
+                        layui.use('layer', function () {
+                            layui.layer.alert('<span style="font-size:16px;">添加失败</span>', {icon: 2});
+                        });
+                    }
+                    pageCar();
+                    $(".insertFloat1").fadeOut(200);
+                },
+                error:function(e){
+                    console.log(e);
+                }
+            });
+            return false;
+        });
+    });
     /* 添加品牌字符串 */
     function addString() {
         var result = '';
@@ -332,6 +376,16 @@
             }
         })
     }
+
+    //转化正整数
+    function zhzs(value){
+        value = value.replace(/[^\d]/g,'');
+        if(''!=value){
+            value = parseInt(value);
+        }
+        return value;
+    }
+
     //放大图片
     function bigImg(imgSrc) {
         layui.use('layer', function () {
@@ -374,10 +428,7 @@
     function addFloat(){
         $(".insertFloat1").fadeIn(200);
     }
-    // 插入车辆数据
-    function insertCar(){
 
-    }
 </script>
 </body>
 </html>

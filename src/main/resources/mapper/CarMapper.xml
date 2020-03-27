@@ -59,4 +59,9 @@
         state from car where cnumber=#{cnumber}
     </select>
 
+    <!-- 添加车辆-->
+    <insert id="insertCar" parameterType="com.ddz.car.domain.qo.InsertCarQO">
+        insert into car(brand,cname,price,seatnumber,state)
+        values (#{brand},#{cname},#{price},#{seatnumber},'1')
+    </insert>
 </mapper>
