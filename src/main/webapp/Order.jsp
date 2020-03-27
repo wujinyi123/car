@@ -202,60 +202,35 @@
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
             </div>
             <div class="f_content">
-                <%--<form method="get" id="form2">--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--汽车编号：<input type="text" name="cnumber" id="a_cnumber" class="CarFloat" required lay-verify="required">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--用户编号：<input type="text" name="unumber" id="a_unumber" class="CarFloat" required lay-verify="required">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--地址信息：<input type="text" name="address" id="a_address" class="CarFloat" required lay-verify="required">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--租赁单价：<input type="text" name="uprice" id="a_uprice" class="CarFloat" required lay-verify="required">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--取车时间：<input type="date" name="pcartime" id="a_pcartime" class="CarFloat" required lay-verify="required">--%>
-                    <%--</div>--%>
-                    <%--<div class="publicf_btn">--%>
-                        <%--<div class="publicf_btn1">--%>
-                            <%--<input type="button" value="提交" onclick="insertOrder()">--%>
-                        <%--</div>--%>
-                        <%--<div class="publicf_btn2 fr Js_closeBtn">--%>
-                            <%--<input type="button" value="取消">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</form>--%>
                     <form class="layui-form layui-card-body" method="POST" id="form2">
                         <div class="layui-form-item">
-                            <label class="layui-form-label">汽车编号：</label>
+                            <label class="layui-form-label" style="width: 100px;">汽车编号：</label>
                             <div class="layui-input-block">
                                 <input type="text" style="width: 200px;" id="a_cnumber" name="a_cnumber" onkeyup="value=zhzs(this.value)" required  lay-verify="required" placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">用户编号：</label>
+                            <label class="layui-form-label" style="width: 100px;">用户编号：</label>
                             <div class="layui-input-block">
                                 <input type="text" style="width: 200px;" id="a_unumber" name="a_unumber" onkeyup="value=zhzs(this.value)" required  lay-verify="required" placeholder="请输入用户编号" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">地址信息：</label>
+                            <label class="layui-form-label" style="width: 100px;">地址信息：</label>
                             <div class="layui-input-block">
                                 <input type="text" style="width: 200px;" id="a_address" name="a_address"  required  placeholder="例：广东广州" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">租赁单价：</label>
+                            <label class="layui-form-label" style="width: 100px;">租赁单价：</label>
                             <div class="layui-input-block">
                                 <input type="text" style="width: 200px;" id="a_uprice" name="a_uprice" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入租赁单价" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">取车时间</label>
+                            <label class="layui-form-label" style="width: 100px;">取车时间：</label>
                             <div class="layui-input-block">
-                                <input type="text" name="a_pcartime" id="a_pcartime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                <input type="date" style="width: 200px;" name="a_pcartime" id="a_pcartime" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                             </div>
                         </div>
 
@@ -275,6 +250,7 @@
 <!-- 弹框的编辑数值-->
 <script type="text/javascript">
 
+
     //新建Order
     layui.use(['form','layer'], function(){
         layui.form.on('submit(insertOrder)', function(dataForm){
@@ -292,7 +268,6 @@
                 contentType: "application/json;charset=utf-8",
                 data: JSON.stringify(jsonData),
                 success: function(data){
-                    alert("jinlai");
                     if (data==1 || data=='1') {
                         layui.use('layer', function () {
                             layui.layer.alert('<span style="font-size:16px;">添加成功</span>', {icon: 1});
@@ -308,7 +283,7 @@
                         $('#a_address').val(''),
                         $('#a_uprice').val(''),
                         $('#a_pcartime').val('')
-                    $(".insertFloat1").fadeOut(200);
+                    $(".insertFloat").fadeOut(200);
                 },
                 error:function(e){
                     console.log(e);

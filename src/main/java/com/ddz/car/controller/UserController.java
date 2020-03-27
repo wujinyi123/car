@@ -11,6 +11,7 @@ import com.ddz.car.domain.qo.UserUpdateQO;
 import com.ddz.car.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,7 +51,7 @@ public class UserController {
     //    插入操作
     @RequestMapping("/insertUser")
     @ResponseBody
-    public int insertUser(UserInsertQO userInsertQO){
+    public int insertUser(@RequestBody UserInsertQO userInsertQO){
         int result = userService.insertUser(userInsertQO);
         return result;
     }

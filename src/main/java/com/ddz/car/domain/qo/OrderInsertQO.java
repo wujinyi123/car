@@ -10,13 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class OrderInsertQO {
-//    private String onumber;
     private String cnumber;
     private String unumber;
     private String address;
     private String uprice;
-    //    private String tprice;
     private String pcartime;
-//    private String rcartime;
 
 }

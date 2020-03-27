@@ -71,7 +71,7 @@
     <!--插入订单信息-->
     <insert id="insertOrder" parameterType="com.ddz.car.domain.qo.OrderInsertQO">
         insert into Orders (cnumber,unumber,address,uprice,tprice,pcartime,rcartime,ostate,state)
-        values (#{cnumber},#{unumber},#{address},#{uprice},#{uprice}*DATEDIFF(#{rcartime},#{pcartime}),#{pcartime},#{rcartime},'0','1')
+        values (#{cnumber},#{unumber},#{address},#{uprice},0,#{pcartime},null,'0','1')
     </insert>
 
 </mapper>

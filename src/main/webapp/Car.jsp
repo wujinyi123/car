@@ -186,27 +186,27 @@
             <div class="f_content">
                 <form class="layui-form layui-card-body" method="POST" id="form2">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">品牌：</label>
+                        <label class="layui-form-label" style="width: 100px;">汽车品牌：</label>
                         <div class="layui-input-block">
                             <input type="text" style="width: 200px;" id="a_brand" name="a_brand" required  lay-verify="required" placeholder="请输入汽车品牌" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">名称：</label>
+                        <label class="layui-form-label" style="width: 100px;">汽车名称：</label>
                         <div class="layui-input-block">
                             <input type="text" style="width: 200px;" id="a_cname" name="a_cname" required  lay-verify="required" placeholder="请输入汽车名称" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">单价：</label>
+                        <label class="layui-form-label" style="width: 100px;">租赁单价：</label>
                         <div class="layui-input-block">
-                            <input type="text" style="width: 200px;" id="a_price" name="a_price" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入租借单价" autocomplete="off" class="layui-input">
+                            <input type="text" style="width: 200px;" id="a_price" name="a_price" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入租借单价（数字）" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">座位：</label>
+                        <label class="layui-form-label" style="width: 100px;">汽车座位：</label>
                         <div class="layui-input-block">
-                            <input type="text" style="width: 200px;" id="a_seatnumber" name="a_seatnumber" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入车辆座位" autocomplete="off" class="layui-input">
+                            <input type="text" style="width: 200px;" id="a_seatnumber" name="a_seatnumber" onkeyup="value=zhzs(this.value)" required  lay-verify="number" placeholder="请输入车辆座位(数字)" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -338,15 +338,15 @@
                 },
                 cols: [[
                     {
-                        field: 'carphoto', title: '汽车展示', sort: true,templet:function (data) {
-                            return '<img src="'+data.carphoto+'" style="height:100%;width: 100%;margin-left: 30px;" onclick="bigImg(\''+data.carphoto+'\')">';
+                        field: 'carphoto',width:300, title: '汽车展示', sort: true,templet:function (data) {
+                            return '<img src="'+data.carphoto+'" style="height:100%;width: 100%;margin-left: 80px;" onclick="bigImg(\''+data.carphoto+'\')">';
                         }
                     },
-                    {field: 'cnumber',width:125, title: '汽车编号', sort: true},
-                    {field: 'brand',width:100, title: '品牌', sort: true},
+                    {field: 'cnumber', title: '汽车编号', sort: true},
+                    {field: 'brand', title: '品牌', sort: true},
                     {field: 'cname', title: '车辆名称', sort: true},
-                    {field: 'price',width:80, title: '单价', sort: true},
-                    {field: 'seatnumber', width:120, title: '座位数', sort: true},
+                    {field: 'price', title: '单价', sort: true},
+                    {field: 'seatnumber', title: '座位数', sort: true},
                     {
                         field: 'id',width:180, title: '操作', sort: true, templet: function (data) {
                             return '<a id="update" class="layui-btn layui-btn-blue layui-btn-mini links_edit" href="#" onclick="add(\''+data.cnumber+'\')" style="text-decoration:none;"><i class="iconfont icon-edit"></i>修改</a>'
