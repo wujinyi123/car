@@ -254,14 +254,14 @@
     // 赋值到编辑框
     function add(onumber,cnumber,unumber,address,uprice,tprice,pcartime,rcartime) {
         $(".update").fadeIn(200);
-        $("#u_onumber").attr("value",onumber);
-        $("#u_cnumber").attr("value",cnumber);
-        $("#u_unumber").attr("value",unumber);
-        $("#u_address").attr("value",address);
-        $("#u_uprice").attr("value",uprice);
-        $("#u_tprice").attr("value",tprice);
-        $("#u_pcartime").attr("value",pcartime);
-        $("#u_rcartime").attr("value",rcartime);
+        $("#u_onumber").val(onumber);
+        $("#u_cnumber").val(cnumber);
+        $("#u_unumber").val(unumber);
+        $("#u_address").val(address);
+        $("#u_uprice").val(uprice);
+        $("#u_tprice").val(tprice);
+        $("#u_pcartime").val(pcartime);
+        $("#u_rcartime").val(rcartime);
     }
 
     // 提交修改的值
