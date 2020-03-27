@@ -9,6 +9,7 @@ import com.ddz.car.domain.qo.OrderUpdateQO;
 import com.ddz.car.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -60,7 +61,7 @@ public class OrderController {
     //    插入操作
     @RequestMapping("/insertOrder")
     @ResponseBody
-    public int insertOrder(OrderInsertQO orderInsertQO){
+    public int insertOrder(@RequestBody OrderInsertQO orderInsertQO){
         int result = orderService.insertOrder(orderInsertQO);
         return result;
     }
