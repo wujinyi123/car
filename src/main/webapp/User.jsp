@@ -190,7 +190,7 @@
 <!-- 模态框添加浮层中的数据 -->
 <div class="PublicFloatBox insert insertFloat" style="display: none;">
     <div class="kongfx">
-        <div class=" wid400">
+        <div class=" wid400" style="width: 600px;">
             <div class="f_Head">
                 <span>添加用户信息</span>
                 <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
@@ -261,8 +261,8 @@
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户类型：</label>
-                            <div class="layui-input-block" >
-                                <select name="flag" id="a_flag" lay-verify="required" style="width: 200px;">
+                            <div class="layui-input-block">
+                                <select name="flag" style="width: 200px;" id="a_flag" lay-filter="a_flag" lay-verify="required" lay-search="">
                                     <option value="0">管理员</option>
                                     <option value="1" selected>普通用户</option>
                                 </select>
