@@ -251,6 +251,10 @@
                         });
                     }
                     pageCar();
+                    $('#a_brand').val('');
+                    $('#a_cname').val('');
+                    $('#a_price').val('');
+                    $('#a_seatnumber').val('');
                     $(".insertFloat1").fadeOut(200);
                 },
                 error:function(e){
