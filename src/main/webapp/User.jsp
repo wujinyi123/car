@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="css/reset.css" rel="stylesheet"/>
     <link href="css/bootstrap.css" rel="stylesheet"/>
-    <link href="css/iconfont.css" rel="stylesheet"/>
     <link href="css/plan.css" rel="stylesheet"/>
     <link href="css/plan2.css" rel="stylesheet"/>
     <link href="css/plan3.css" rel="stylesheet"/>
@@ -58,13 +57,13 @@
     <div class="leftBox">
         <ul>
             <a href="Car.jsp">
-                <li><i class="iconfont icon-tubiaozhizuomobanyihuifu-"></i><span>车辆管理</span></li>
+                <li><i class="glyphicon glyphicon-road"></i><span>车辆管理</span></li>
             </a>
             <a href="Order.jsp">
-                <li><i class="iconfont icon-app_icons--"></i><span>订单管理</span></li>
+                <li><i class="glyphicon glyphicon-th-list"></i><span>订单管理</span></li>
             </a>
             <a href="#">
-                <li><i class="iconfont icon-weibiaoti1"></i><span>用户管理</span></li>
+                <li><i class="glyphicon glyphicon-user"></i><span>用户管理</span></li>
             </a>
         </ul>
     </div>
@@ -190,55 +189,23 @@
 <!-- 模态框添加浮层中的数据 -->
 <div class="PublicFloatBox insert insertFloat" style="display: none;">
     <div class="kongfx">
-        <div class=" wid400" style="width: 600px;">
+        <div class=" wid400" style="width: 580px;">
             <div class="f_Head">
                 <span>添加用户信息</span>
-                <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
+                <i class="Js_closeBtn glyphicon glyphicon-remove fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
             </div>
             <div class="f_content">
-                <%--<form method="get" id="form2">--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--用户姓名：<input type="text" name="uname" id="a_uname" class="CarFloat">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--用户账号：<input type="text" name="accountnumber" id="a_accountnumber" class="CarFloat">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--用户密码：<input type="password" name="password" id="a_password" class="CarFloat">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--再次输入：<input type="password" name="password2" id="a_password2" class="CarFloat">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--用户邮箱：<input type="text" name="email" id="a_email" class="CarFloat">--%>
-                    <%--</div>--%>
-                    <%--<div class="f_alonediv">--%>
-                        <%--名单状态：--%>
-                        <%--<select name="flag" id="a_flag" class="CarFloat">--%>
-                            <%--<option value="0">管理员</option>--%>
-                            <%--<option value="1" selected>普通用户</option>--%>
-                        <%--</select>--%>
-                    <%--</div>--%>
-                    <%--<div class="publicf_btn">--%>
-                        <%--<div class="publicf_btn1">--%>
-                            <%--<input type="button" value="提交" onclick="insertUser()">--%>
-                        <%--</div>--%>
-                        <%--<div class="publicf_btn2 fr Js_closeBtn">--%>
-                            <%--<input type="button" value="取消">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</form>--%>
                     <form class="layui-form layui-card-body" method="POST" id="form2">
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户姓名：</label>
                             <div class="layui-input-block">
-                                <input type="text" style="width: 200px;" id="a_uname" name="a_uname" required  lay-verify="required" placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
+                                <input type="text" style="width: 200px;" id="a_uname" name="a_uname" required  lay-verify="required" placeholder="请输入用户姓名" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户账号：</label>
                             <div class="layui-input-block">
-                                <input type="text" style="width: 200px;" id="a_accountnumber" name="a_accountnumber" required  lay-verify="required" placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
+                                <input type="text" style="width: 200px;" id="a_accountnumber" name="a_accountnumber" required  lay-verify="required" placeholder="请输入用户账号" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -256,13 +223,13 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户邮箱：</label>
                             <div class="layui-input-block">
-                                <input type="text" style="width: 200px;" id="a_email" name="a_email"  placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
+                                <input type="text" lay-verify="email" style="width: 200px;" id="a_email" name="a_email"  placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户类型：</label>
                             <div class="layui-input-block">
-                                <select name="flag" style="width: 200px;" id="a_flag" lay-filter="a_flag" lay-verify="required" lay-search="">
+                                <select name="flag"  id="a_flag" lay-filter="a_flag" lay-verify="required" lay-search="">
                                     <option value="0">管理员</option>
                                     <option value="1" selected>普通用户</option>
                                 </select>
@@ -270,8 +237,8 @@
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <button class="layui-btn layui-btn-blue" lay-submit lay-filter="insertOrder">立即提交</button>
-                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                <button class="layui-btn layui-btn-warm" lay-submit lay-filter="insertOrder" style="margin-left: 30px;">提交</button>
+                                <button type="reset" class="layui-btn layui-btn" style="margin-left: 30px;">重置</button>
                             </div>
                         </div>
                     </form>

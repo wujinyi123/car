@@ -1,8 +1,8 @@
 body, html { min-width: 1200px; /* height: 100%; */ background: #f1f1f1; }
 body { /* background: #f1f1f1; */ }
 .pc_wrap { position: absolute; width: 100%; height: 100%; background: #fff; left: 0; top: 0; }
-/*µÇÂ¼*/
-.LoginBox { background: url(../images/bg.jpg) no-repeat center top; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-size: cover; }
+/*ï¿½ï¿½Â¼*/
+
 .LoginBox::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,.1); }
 .VerticalCenteredBox { width: 469px; height: 319px; position: absolute; left: 50%; top: 50%; margin: -159.5px 0 0 -234.5px; background: rgba(245,245,245,.7); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
 .LoginHead { background: #fe7844; height: 60px; line-height: 60px; text-align: center; color: #fff; font-size: 22px; font-weight: bold; }
@@ -25,7 +25,7 @@ body { /* background: #f1f1f1; */ }
 .LoginLastBox .RightBox:hover { background: #f96228; }
 
 
-/*ÓÃ»§¹ÜÀí*/
+/*ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .Usermanage { }
 .PublicHead { position: fixed; height: 60px; background: #fe7844; padding: 0 2%; width: 96%; z-index: 11; left: 0; }
 .PublicHead .leftBox { line-height: 60px; display: inline-block; float: left; }
@@ -61,7 +61,7 @@ body { /* background: #f1f1f1; */ }
 
 .PublicDownWhole .RightBox { display: inline-block; position: relative; left: 13%; background: #f1f1f1; height: 100%; width: 83%; float: left; padding: 2%; vertical-align: top; }
 
-/*ÓÒ²àºÐ×Ó¹«ÓÃÑùÊ½*/
+/*ï¿½Ò²ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 .PublicContentBox { }
 .PublicPointToAgeText { padding: 0 0 2% 0; /* background: #f1f1f1; */ font-weight: bold; }
 .PublicPointToAgeText span { color: #000; font-size: 15px; }
@@ -144,7 +144,7 @@ body { /* background: #f1f1f1; */ }
 
 
 
-/*Ìí¼ÓÓÃ»§¸¡²ã*/
+/*ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .PublicFloatBox { position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,.4); z-index: 999; display: none; overflow:auto; -webkit-overflow-scrolling:touch; }
 .kongfx { padding: 50px 0; position: absolute;left: 50%; -webkit-transform: translate(-50%,0%); -moz-transform: translate(-50%,0%); -ms-transform: translate(-50%,0%); -o-transform: translate(-50%,0%); transform: translate(-50%,0%); }
 .f_MiddleBox { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%,-50%); -moz-transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%); -o-transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%); background: #fff; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; /* overflow: hidden; */ }
@@ -215,7 +215,7 @@ body { /* background: #f1f1f1; */ }
 }
 
 
-/* Éú²úµ÷¶È */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .f_content div{margin: 30px 55px 0px 55px}
 .f_alonediv input{
 	border:solid 1px #999 ;
@@ -234,7 +234,7 @@ body { /* background: #f1f1f1; */ }
 	border:solid 1px #999 ;
 	width:100px;
 }
-/*·µ»Ø¶¥²¿*/
+/*ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½*/
 .back-to-top { display: none; width: 40px; height: 40px; text-align: center; color: white; position: fixed; border-radius: 50%; bottom: 20px; right: 12px; background-color: #3b5998; z-index: 10000; }
 .back-to-top i { font-size: 37px; }
 .back-to-top:hover { color: white; background-color: #000; transition: all .5s; }

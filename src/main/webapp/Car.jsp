@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="css/reset.css" rel="stylesheet"/>
     <link href="css/bootstrap.css" rel="stylesheet"/>
-    <link href="css/iconfont.css" rel="stylesheet"/>
     <link href="css/plan.css" rel="stylesheet"/>
     <link href="css/plan2.css" rel="stylesheet"/>
     <link href="css/plan3.css" rel="stylesheet"/>
@@ -58,13 +57,13 @@
     <div class="leftBox">
         <ul>
             <a href="#">
-                <li><i class="iconfont icon-tubiaozhizuomobanyihuifu-"></i><span>车辆管理</span></li>
+                <li><i class="glyphicon glyphicon-road"></i><span>车辆管理</span></li>
             </a>
             <a href="Order.jsp">
-                <li><i class="iconfont icon-app_icons--"></i><span>订单管理</span></li>
+                <li><i class="glyphicon glyphicon-th-list"></i><span>订单管理</span></li>
             </a>
             <a href="User.jsp">
-                <li><i class="iconfont icon-weibiaoti1"></i><span>用户管理</span></li>
+                <li><i class="glyphicon glyphicon-user"></i><span>用户管理</span></li>
             </a>
         </ul>
     </div>
@@ -181,7 +180,7 @@
         <div class=" wid400">
             <div class="f_Head">
                 <span>添加汽车信息</span>
-                <i class="Js_closeBtn iconfont icon-buoumaotubiao20 fr" style="float: right;"></i>
+                <i class="Js_closeBtn glyphicon glyphicon-remove fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
             </div>
             <div class="f_content">
                 <form class="layui-form layui-card-body" method="POST" id="form2">
@@ -212,8 +211,8 @@
 
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn layui-btn-blue" lay-submit lay-filter="insertCar">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn layui-btn-warm" lay-submit lay-filter="insertCar" style="margin-left: 30px;">提交</button>
+                            <button type="reset" class="layui-btn layui-btn" style="margin-left: 30px;">重置</button>
                         </div>
                     </div>
                 </form>

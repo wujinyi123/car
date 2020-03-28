@@ -1,0 +1,375 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+li{
+  list-style: none;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+body{
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-size: 100% 100%;
+  position: relative;
+  /*background-image: url('../images/banner8.png');//桌面背景*/
+}
+/* header */
+.header{
+  width: 100%;
+  height: 120px;
+  /*background-image: url('../images/banner9.jpg');*/
+  background-size:50% 100%; 
+  border: 1px solid black;
+}
+.header .logo{
+  margin-left: 30px;
+  height: 120px;
+  width:100px;
+  float: left;
+  text-align:center;
+}
+.header .header2{
+  height: 70px;
+  width: 80%;
+  margin: 0px auto;
+}
+.header .header2 .spann1{
+  height: 70px;
+  width:100px;
+  margin: 0px auto;
+  font-size: 40px;
+  color: black;
+  font-family: '华文琥珀' ;
+}
+.header .touxiang{
+  width: 180px;
+  height: 80px;
+  float: right;
+  margin-top: -50px;
+}
+.header .touxiang>img{
+  width: 60px;
+  height: 60px;
+  margin-left: 30px;
+  float: left;
+}
+.header .touxiang a:nth-child(2){ 
+  color: blue;
+  font-size: 14px;
+  text-decoration: none;
+}
+.header .touxiang a:nth-child(2):hover{
+  color:yellow;
+}
+.header .touxiang .pic2{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 30px;
+  border: 0px solid green;  
+}
+.header  .touxiang .pic2:hover{
+  opacity: 0.8;
+}
+/* 导航栏 */
+.nav{
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  margin: 0px auto;
+  z-index: 100;
+}
+.nav li{
+  width: 225px;
+  display: inline-block;
+  margin-left: 60px;
+}
+.nav li a{
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+.nav a:hover{
+  color: skyblue;
+}
+/* 侧导航栏 */
+.left-nav{
+  width: 40px;
+  height: 250px;
+  position: fixed;
+  left: 0px;
+  top: 300px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #333;
+}
+.left-nav ul a{
+  text-decoration: none;
+}
+.left-nav ul a li{
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 8px;
+  transition: 0.3s;
+  color: gray;
+}
+.left-nav ul a li:hover{
+  font-size: 25px;
+  color: white;
+}
+/* 登录弹框 */
+.onload{
+  width: 400px;
+  height: 550px;
+  background-color: white;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  margin-left: -200px;
+  z-index: 120;
+  display: none;
+}
+.onload .onload-up .left-up{
+  width: 300px;
+  height: 50px;
+  float: left;
+}
+.onload .onload-up .left-up p{
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  color: black;
+  font-family: "华文彩云";
+  text-align: right;
+  margin-top: 10px;
+}
+.onload .onload-up .left-down{
+  margin-top: 20px;
+  width: 300px;
+  height: 30px;
+  float: left;
+}
+.onload .onload-up .left-down span a{
+  text-decoration: none;  
+}
+.onload .onload-up .left-down .deng1{
+  width: 150px;
+  height: 30px;
+  float: left;
+  text-align: center;
+}
+.onload .onload-up .left-down .deng2{
+  width: 100px;
+  height: 30px;
+  float: right;
+  text-align: left;
+}
+.modal-backdrop{
+  z-index: 119;
+}
+.onload .onload-up .left-down img{
+  z-index: 150;
+  opacity: 1;
+  margin-left: 170px;
+  margin-top: 50px;
+}
+.onload .onload-up .right-up{
+  width: 52px;
+  height: 52px;
+  float: right;
+  margin-top: -40px;
+  margin-right: 10px;
+}
+/* 表单 */
+.onload .onload-center{
+  width: 320px;
+  height: 300px;
+  overflow: hidden;
+  margin: 0px auto;
+}
+.onload .onload-center form input{
+  margin-top: 30px;
+}
+.onload .onload-center form button{
+  width: 100%;
+  height: 40px;
+  background-color: orange;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: white;
+}
+.onload .onload-center .onload-dd{
+  margin-top: 20px;
+  width: 100%;
+}
+.onload .onload-center .onload-dd input{
+  float: left;
+}.onload .onload-center .onload-dd span a{
+  text-decoration: none;
+}
+.onload .onload-center .onload-dd span:nth-child(1){
+  width: 100px;
+  float: left;
+  cursor: pointer;
+}
+.onload .onload-center .onload-dd span:nth-child(2){
+  width: 120px;
+  float: right;
+}
+/* 登录图标 */
+.onload .onload-down .down-li{
+  width: 100%;
+  height: 30px;
+  
+}
+.onload .onload-down .down-li p{
+  color: black;
+  font-size: 15px;
+  text-align: center;
+}
+.onload .onload-down .ul-tic{
+  width: 200px;
+  margin: 20px auto;
+}
+.onload .onload-down .ul-tic .tic{
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  display: inline-block;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.onload .onload-down .ul-tic .tic:hover{
+  opacity: 0.8;
+}
+.onload .onload-down .ul-tic .tic img{
+  margin-top: 12px;
+  margin-left: 13px;
+  width: 50%;
+  height: 50%;
+}
+
+.onload .onload-down .btn3{
+  width: 50px;
+  height: 30px;
+  float: right;
+}
+
+
+.sousuolan{
+  width: 70%;
+  height: 100px;
+  margin: 0px auto;
+  background-color: #eee;
+  margin-top: 10px;
+}
+/*城市选择*/
+.sousuolan .citychoise{
+  width: 300px;
+  height: 100px;
+  float: left;
+  margin-left: 40px;
+}
+.sousuolan .citychoise label{
+  height: 30px;
+  width: 80px;
+  float: left;
+  margin-top: 38px;
+  font-weight: bold;
+}
+.sousuolan .citychoise .chengshixuanze{
+  width: 200px;
+  height: 50px;
+  float: left;
+  margin-top: 30px;
+}
+.sousuolan .citychoise .chengshixuanze .sheng,.shi{
+  width: 100px;
+  height: 50px;
+  float: left;
+}
+
+/*时间选择*/
+
+.sousuolan .timechoise .StratTime,.EndTime{
+  width: 200px;
+  height: 50px;
+  float: left;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.sousuolan .timechoise .demo .input{
+  width: 100px;
+  height: 35px;
+  border-radius:5px;
+  border: 0px;
+}
+.sousuolan .timechoise .demo p{
+  font-weight: bold;
+}
+
+/*提交按钮*/
+.sousuolan .check{
+  width: 100px;
+  height: 35px;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+/* 筛选 */
+/*品牌*/
+.pingpai{
+  width: 70%;
+  background-color: #eee;
+  height: 130px;
+  margin: 0px auto;
+}
+.pingpai .brand{
+  height: 30px;
+  margin: 0px auto;
+  cursor: pointer;
+  margin-right: 10px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.pingpai .col-md-1{
+  margin-top: 10px;
+}
+/*价格*/
+.jiage{
+  width: 70%;
+  background-color: #eee;
+  height: 50px;
+  margin: 0px auto;
+}
+.jiage .price{
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 0px auto;
+  cursor: pointer;
+  margin-right: 10px;
+}
+/*座位*/
+.zuowei{
+  width: 70%;
+  background-color: #eee;
+  height: 100px;
+  margin: 0px auto;
+}
+.zuowei .seat{
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 0px auto;
+  cursor: pointer;
+  margin-right: 10px;
+}
