@@ -25,16 +25,17 @@
 </div>
 <!--荧光点点-->
 <div class="wel" id="git"></div>
+
 <div class="login_div">
     <div class="col-xs-12 login_title">登录</div>
     <form action="" class="login" method="post" id="form1">
         <div class="nav">
             <div class="nav login_nav">
                 <div class="col-xs-4 login_username">
-                    账&nbsp;&nbsp;&nbsp;&nbsp;号:
+                    用户账号:
                 </div>
                 <div class="col-xs-6 login_usernameInput">
-                    <input type="text" name="accountnumber" id="name" placeholder="请输入账号"  onBlur="javascript:ok_or_errorBylogin(this)" />
+                    <input type="text" name="accountnumber" id="name" value="15521688071" placeholder="请输入账号"  onBlur="javascript:ok_or_errorBylogin(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -45,16 +46,27 @@
             </div>
             <div class="nav login_psdNav">
                 <div class="col-xs-4">
-                    密&nbsp;&nbsp;&nbsp;&nbsp;码:
+                    用户密码:
                 </div>
                 <div class="col-xs-6">
-                    <input type="password" name="password" id="psd" placeholder="请输入密码" onBlur="javascript:ok_or_errorBylogin(this)" />
+                    <input type="password" name="password" id="psd" value="123456" placeholder="请输入密码" onBlur="javascript:ok_or_errorBylogin(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
                 </div>
                 <div class="col-xs-1 error_cuo">
                     ×
+                </div>
+            </div>
+            <div class="nav login_psdNav">
+                <div class="col-xs-4">
+                    用户类型:
+                </div>
+                <div class="col-xs-6">
+                    <select name="flag" style="width: 285px;" id="flag_l" >
+                        <option value="0" selected>管理员</option>
+                        <option value="1">普通用户</option>
+                    </select>
                 </div>
             </div>
             <div class="nav login_psdNav">
@@ -71,6 +83,7 @@
                     ×
                 </div>
             </div>
+            <%--验证码--%>
             <div id="check-code" style="overflow: hidden;">
                 <div class="code" id="data_code"></div>
             </div>
@@ -79,6 +92,9 @@
             </div>
             <div class="col-xs-6 login_btn_div">
                 <input type="button" class="sub_btn" value="重置" id="reset" onclick="reset1()"/>
+            </div>
+            <%--登录成功弹框--%>
+            <div class="success">
             </div>
         </div>
     </form>
@@ -263,14 +279,25 @@
                 name_state.parent().next().next().css("display", "none");
                 psd_state.parent().next().next().css("display", "none");
                 vcode_state.parent().next().next().css("display", "none");
-                if (vcode!=$('#data_code').attr('data-value')) {
+                if (vcode.toUpperCase()!=$('#data_code').attr('data-value').toUpperCase()) {
+                    alert("验证码不正确");
                     name_state.parent().next().next().css("display", "none");
                     psd_state.parent().next().next().css("display", "none");
                     vcode_state.parent().next().next().css("display", "block");
                     return false;
                 }
                 else{
-                    $('.login').submit();
+                    alert("跳转");
+                    $.ajax({
+                        type: "POST",
+                        url: "/user/login",
+                        data: $("#form1").serialize(),
+                        success: function (data) {
+                            alert(data.state);
+                            login_check(data);
+                        }
+                    });
+
                 }
             }
         });
@@ -416,6 +443,7 @@
     function reset1(){
         $("#name").val('');
         $("#psd").val('');
+        $("#flag_l").val("1");
         $("#vcode").val('');
     }
 
@@ -425,20 +453,41 @@
         $("#psd_r").val('');
         $("#affirm_psd").val('');
         $("#email_r").val('');
-
-        $("#name_r").parent().next().css("display", "none");
-        $("#accountnumber_r").parent().next().css("display", "none");
-        $("#psd_r").parent().next().css("display", "none");
-        $("#affirm_psd").parent().next().css("display", "none");
-        $("#email_r").parent().next().css("display", "none");
-
-        $("#name_r").parent().next().next().css("display", "none");
-        $("#accountnumber_r").parent().next().next().css("display", "none");
-        $("#psd_r").parent().next().next().css("display", "none");
-        $("#affirm_psd").parent().next().next().css("display", "none");
-        $("#email_r").parent().next().next().css("display", "none");
+        $("#flag_2").val("1");
     }
 
+    // 登录验证
+    function login_check(data){
+        alert(data.state);
+        var test = <%= request.getSession().getAttribute("flag")%>;
+        var test2 = <%= request.getSession().getAttribute("uname")%>;
+        var test3 = <%= request.getSession().getAttribute("accountnumber")%>;
+        alert(test);
+        alert(test2);
+        alert(test3);
+        setTimeout(function () {
+            if (data.state == 'pass') {
+                //登录成功
+                alert("拿到值了");
+                $(".success").fadeIn(1000);
+                $(".success").html("登录成功<br /><br />欢迎回来");
+                alert(request.getSession().getAttribute("flag"));
+                setTimeout(function () {
+                    if (test=='1') {
+                        window.location.href="index.jsp";
+                    }
+                    else if(test=='0'){
+                        window.location.href="Car.jsp";
+                    }
+                }, 1300);
+            } else {
+                setTimeout(function () {
+                    AjaxErro({"Status":"Erro","Erro":data.msg});
+                },1000);
+                // window.location.href="Login.jsp";
+            }
+        }, 1300);
+    }
 </script>
 </body>
 </html>

@@ -1,7 +1,9 @@
 package com.ddz.car.service;
 
 
+import com.ddz.car.domain.dto.LoginDTO;
 import com.ddz.car.domain.dto.UserDTO;
+import com.ddz.car.domain.qo.LoginQO;
 import com.ddz.car.domain.qo.UserInsertQO;
 import com.ddz.car.domain.qo.UserQO;
 import com.ddz.car.domain.qo.UserUpdateQO;
@@ -19,4 +21,8 @@ public interface UserService {
 
     //    插入订单信息
     int insertUser(UserInsertQO userInsertQO);
+
+    //登录
+    UserDTO login_check(LoginQO loginQO);
+
 }

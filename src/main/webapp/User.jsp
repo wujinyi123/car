@@ -11,8 +11,6 @@
     <link href="css/reset.css" rel="stylesheet"/>
     <link href="css/bootstrap.css" rel="stylesheet"/>
     <link href="css/plan.css" rel="stylesheet"/>
-    <link href="css/plan2.css" rel="stylesheet"/>
-    <link href="css/plan3.css" rel="stylesheet"/>
     <link href="layui/css/layui.css" rel="stylesheet"/>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/plan.js"></script>
@@ -25,7 +23,7 @@
 <div class="PublicHead clearfix">
     <div class="leftBox clearfix">
         <div class="companyLogo">
-            <img src="images/dongruan.jpg"/>
+            <img src="../img/xiaoyanzi.jpeg"/>
         </div>
         <!--<i class="iconfont icon-caidan"></i>-->
 

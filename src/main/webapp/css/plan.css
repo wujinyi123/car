@@ -1,33 +1,11 @@
 ﻿body, html { min-width: 1200px; /* height: 100%; */ background: #f1f1f1; }
 body { /* background: #f1f1f1; */ }
 .pc_wrap { position: absolute; width: 100%; height: 100%; background: #fff; left: 0; top: 0; }
-/*登录*/
-.LoginBox { background: url("../img/qq.png") no-repeat center top; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-size: cover; }
-.LoginBox::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,.1); }
-.VerticalCenteredBox { width: 469px; height: 319px; position: absolute; left: 50%; top: 50%; margin: -159.5px 0 0 -234.5px; background: rgba(245,245,245,.7); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
-.LoginHead { background: #fe7844; height: 60px; line-height: 60px; text-align: center; color: #fff; font-size: 22px; font-weight: bold; }
-.mar_top30 { margin-top: 30px; }
-.LoginUserBoxOut { margin: auto; width: 325px; }
-.LoginUserBox { width: 325px; height: 42px; background: #fff; border: 1px solid #ccc; border-radius: 3px; margin-bottom: 30px; position: relative; }
-.LoginUserBox span { color: #ff0000; font-size: 12px; position: absolute; bottom: -24px; left: 0; }
-.LoginUserInput { padding: 0 20px; height: 100%; font-size: 16px; color: #333; width: 285px; }
-.LoginUserInput::-webkit-input-placeholder { color: #ccc; }
-
-.LoginLastBox { position: relative; }
-.LoginLastBox .leftBox { display: inline-block; vertical-align: middle; float: left; /* line-height: 39px; */ margin: 11px 0 0 0; }
-.LoginLastBox .leftBox span { font-size: 14px; vertical-align: middle; }
-.inputcheck { -webkit-appearance: none; }
-.inputcheck + label { display: inline-block; width: 17px; height: 17px; cursor: pointer; top: 0; left: 0; background: rgb(254, 120, 68); vertical-align: middle; position: relative; }
-
-.inputcheck:checked + label::before { display: inline-block; content: "\2714"; text-align: center; font-size: 16px; color: white; position: absolute; top: -3px; left: 2px; }
-
-.LoginLastBox .RightBox {margin-left: 20px; width: 85px; height: 40px; text-align: center; display: inline-block; float: right; background: #fe7844; color: #fff; border-radius: 3px; line-height: 40px; font-size: 16px; }
-.LoginLastBox .RightBox:hover { background: #f96228; }
 
 
 /*用户管理*/
 .Usermanage { }
-.PublicHead { position: fixed; height: 60px; background: #fe7844; padding: 0 2%; width: 96%; z-index: 11; left: 0; }
+.PublicHead { position: fixed; height: 60px; background: #1b6d85; padding: 0 2%; width: 100%; z-index: 11; left: 0; }
 .PublicHead .leftBox { line-height: 60px; display: inline-block; float: left; }
 .PublicHead .leftBox > div { display: inline-block; }
 .PublicHead .leftBox i { font-size: 23px; vertical-align: middle; color: #fff; margin: 0 20px; }
@@ -52,10 +30,10 @@ body { /* background: #f1f1f1; */ }
 .PublicDownWhole .leftBox ul li { width: 100%; height: 45px; line-height: 45px; font-size: 15px; color: #000; cursor: pointer; white-space: nowrap; }
 .PublicDownWhole .leftBox ul li i { font-size: 16px; vertical-align: middle; margin: 0 0 0 22%; }
 .PublicDownWhole .leftBox ul li span { vertical-align: middle; margin: 0 0 0 8px; font-size: 15px; }
-.PublicDownWhole .leftBox ul li:hover { background: #fe7844; transition: all ease .3s; }
+.PublicDownWhole .leftBox ul li:hover { background: #1b6d85; transition: all ease .3s; }
 .PublicDownWhole .leftBox ul li:hover i { color: #fff; }
 .PublicDownWhole .leftBox ul li:hover span { color: #fff; }
-.PublicDownWhole .leftBox ul li.Select { background: #fe7844; transition: all ease .3s; }
+.PublicDownWhole .leftBox ul li.Select { background: #1b6d85; transition: all ease .3s; }
 .PublicDownWhole .leftBox ul li.Select i { color: #fff; }
 .PublicDownWhole .leftBox ul li.Select span { color: #fff; }
 
@@ -151,7 +129,7 @@ body { /* background: #f1f1f1; */ }
 .f_Head { height: 50px; background: #fe7844; position: relative; color: #fff; padding: 0 10px; line-height: 50px; }
 .f_Head span { font-size: 15px; }
 .f_Head i { font-size: 22px; cursor: pointer; }
-.wid400 { width: 400px; }
+.wid400 { width: 500px; }
 .wid260 { width: 260px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; overflow: hidden; }
 .f_content { background: #fff; padding: 25px 0; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; }
 .f_alonediv { margin: 0 0 25px 0; position: relative; }
@@ -179,8 +157,59 @@ body { /* background: #f1f1f1; */ }
 .publicf_btn1:hover { background: #ff520f; transition: all ease .3s; }
 .publicf_btn2 { background: #a8a8a8; }
 .publicf_btn2:hover { background: #868686; transition: all ease .3s; }
+.OrderConten{
+	margin: 20px 0px 20px 0px;
+}
+.OrderConten span{
+	display: inline-block;
+	margin-left: 40px;
+}
+.addContent{
+	margin: 0px auto;
+	width: 495px;
+	border:solid 1px #999 ;
+	padding-bottom: 10px;
+	display: none;
+}
+.addbaogong{
+	margin: 10px;
+}
+.addbaogong input[type=radio]{
+-webkit-appearance: radio;
+}
+.addbaogong textarea{
+	 border:solid 1px #999;
+	 margin-left: 30px;
+	 width: 400px;
+	 height: 100px;
+}
+.qx_bc{
+	width: 400px;
+	margin:0 auto;
+}
+.qx_bc button{
+	width: 80px;
+	margin-left: 60px;
+}
 
-
+.f_content div{margin: 30px 55px 0px 55px}
+.f_alonediv input{
+	border:solid 1px #999 ;
+	width: 200px;
+	padding: 2px;
+}
+.f_alonediv span{
+	margin-left: 20px;
+}
+.shebeixulie input{
+	border:solid 1px #999 ;
+	width: 150px;
+	padding: 2px;
+}
+.f_alonediv select{
+	border:solid 1px #999 ;
+	width:100px;
+}
 
 /*返回顶部*/
 .back-to-top { display: none; width: 40px; height: 40px; text-align: center; color: white; position: fixed; border-radius: 50%; bottom: 20px; right: 12px; background-color: #3b5998; z-index: 10000; }

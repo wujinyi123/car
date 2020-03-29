@@ -1,7 +1,9 @@
 package com.ddz.car.mapper;
 
 
+import com.ddz.car.domain.dto.LoginDTO;
 import com.ddz.car.domain.dto.UserDTO;
+import com.ddz.car.domain.qo.LoginQO;
 import com.ddz.car.domain.qo.UserInsertQO;
 import com.ddz.car.domain.qo.UserQO;
 import com.ddz.car.domain.qo.UserUpdateQO;
@@ -22,4 +24,9 @@ public interface UserMapper {
 
     //    插入订单信息
     int insertUser(UserInsertQO userInsertQO);
+
+    //登录
+    UserDTO login(LoginQO loginQO);
+
+
 }

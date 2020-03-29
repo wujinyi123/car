@@ -11,8 +11,6 @@
     <link href="css/reset.css" rel="stylesheet"/>
     <link href="css/bootstrap.css" rel="stylesheet"/>
     <link href="css/plan.css" rel="stylesheet"/>
-    <link href="css/plan2.css" rel="stylesheet"/>
-    <link href="css/plan3.css" rel="stylesheet"/>
     <link href="layui/css/layui.css" rel="stylesheet"/>
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/plan.js"></script>
@@ -36,7 +34,7 @@
     <div class="RightBox clearfix">
         <div class="UserPhotoBox">
             <div class="UserPic">
-                <img src="images/user.jpg"/>
+                <img src="../img/xiaoyanzi.jpeg"/>
             </div>
             <div class="UserName">
                 商家

@@ -64,4 +64,20 @@
         values (#{unumber},#{uname},#{accountnumber},#{password},0,#{flag},#{email},1)
     </insert>
 
+    <!--登录验证-->
+    <select id="login" parameterType="com.ddz.car.domain.qo.LoginQO" resultType="com.ddz.car.domain.dto.UserDTO">
+        select
+        unumber,
+        uname,
+        accountnumber,
+        password,
+        blacklist,
+        flag,
+        email,
+        state
+        from Users
+        where state = '1' and blacklist = '0' and accountnumber = #{accountnumber} and password = #{password} and flag = #{flag}
+    </select>
+
+
 </mapper>

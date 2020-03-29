@@ -2,12 +2,9 @@ package com.ddz.car.controller;
 
 import com.ddz.car.common.ResponseData;
 import com.ddz.car.common.ResponseDataUtil;
-import com.ddz.car.domain.dto.OrderDTO;
+import com.ddz.car.domain.dto.LoginDTO;
 import com.ddz.car.domain.dto.UserDTO;
-import com.ddz.car.domain.qo.OrderQO;
-import com.ddz.car.domain.qo.UserInsertQO;
-import com.ddz.car.domain.qo.UserQO;
-import com.ddz.car.domain.qo.UserUpdateQO;
+import com.ddz.car.domain.qo.*;
 import com.ddz.car.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -54,5 +52,21 @@ public class UserController {
     public int insertUser(@RequestBody UserInsertQO userInsertQO){
         int result = userService.insertUser(userInsertQO);
         return result;
+    }
+
+    //    登陆操作
+    @RequestMapping("/login")
+    @ResponseBody
+    public LoginDTO login_check(HttpServletRequest request, LoginQO loginQO){
+        UserDTO userDTO = userService.login_check(loginQO);
+        if (userDTO!=null){
+            request.getSession().setAttribute("accountnumber",userDTO.getAccountnumber());
+            request.getSession().setAttribute("password", userDTO.getPassword());
+            request.getSession().setAttribute("unumber", userDTO.getUnumber());
+            request.getSession().setAttribute("uname", userDTO.getUname());
+            request.getSession().setAttribute("flag", userDTO.getFlag());
+            return new LoginDTO("pass","");
+        }
+        return new LoginDTO("unpass","账号、密码或用户类型有误");
     }
 }

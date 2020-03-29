@@ -1,8 +1,6 @@
 package com.ddz.car.service.impl;
-
-
-
 import com.ddz.car.domain.dto.UserDTO;
+import com.ddz.car.domain.qo.LoginQO;
 import com.ddz.car.domain.qo.UserInsertQO;
 import com.ddz.car.domain.qo.UserQO;
 import com.ddz.car.domain.qo.UserUpdateQO;
@@ -38,4 +36,12 @@ public class UserServiceImpl implements UserService {
     public int insertUser(UserInsertQO userInsertQO) {
         return userMapper.insertUser(userInsertQO);
     }
+
+    //登录
+    @Override
+    public UserDTO login_check(LoginQO loginQO) {
+        return userMapper.login(loginQO);
+    }
+
+
 }
