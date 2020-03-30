@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LoginDTO {
     private String state;
-    private String mag;
+    private String msg;
 }

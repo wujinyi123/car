@@ -88,7 +88,7 @@
                 <div class="code" id="data_code"></div>
             </div>
             <div class="col-xs-6 login_btn_div">
-                <input type="submit" class="sub_btn" value="登录" id="login" />
+                <input type="button" class="sub_btn" value="登录" id="login" />
             </div>
             <div class="col-xs-6 login_btn_div">
                 <input type="button" class="sub_btn" value="重置" id="reset" onclick="reset1()"/>
@@ -287,13 +287,13 @@
                     return false;
                 }
                 else{
-                    alert("跳转");
+                    // alert("跳转");
                     $.ajax({
                         type: "POST",
                         url: "/user/login",
                         data: $("#form1").serialize(),
                         success: function (data) {
-                            alert(data.state);
+                            // alert(data.state);
                             login_check(data);
                         }
                     });
@@ -458,25 +458,25 @@
 
     // 登录验证
     function login_check(data){
-        alert(data.state);
-        var test = <%= request.getSession().getAttribute("flag")%>;
-        var test2 = <%= request.getSession().getAttribute("uname")%>;
-        var test3 = <%= request.getSession().getAttribute("accountnumber")%>;
-        alert(test);
-        alert(test2);
-        alert(test3);
+        <%--alert(data.state);--%>
+        <%--var test = <%= request.getSession().getAttribute("flag")%>;--%>
+        <%--var test2 = <%= request.getSession().getAttribute("uname")%>;--%>
+        <%--var test3 = <%= request.getSession().getAttribute("accountnumber")%>;--%>
+        <%--alert(test);--%>
+        <%--alert(test2);--%>
+        <%--alert(test3);--%>
         setTimeout(function () {
             if (data.state == 'pass') {
                 //登录成功
-                alert("拿到值了");
+                // alert("拿到值了");
                 $(".success").fadeIn(1000);
                 $(".success").html("登录成功<br /><br />欢迎回来");
-                alert(request.getSession().getAttribute("flag"));
+                // alert(request.getSession().getAttribute("flag"));
                 setTimeout(function () {
-                    if (test=='1') {
+                    if (data.msg=='1') {
                         window.location.href="index.jsp";
                     }
-                    else if(test=='0'){
+                    else if(data.msg=='0'){
                         window.location.href="Car.jsp";
                     }
                 }, 1300);

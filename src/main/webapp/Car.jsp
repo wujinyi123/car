@@ -37,7 +37,7 @@
                 <img src="../img/xiaoyanzi.jpeg"/>
             </div>
             <div class="UserName">
-                商家
+                ${sessionScope.thisUser.uname}
             </div>
         </div>
         <a href="index.html">
