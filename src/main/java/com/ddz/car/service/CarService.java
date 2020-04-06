@@ -5,6 +5,7 @@ import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
 import com.ddz.car.domain.qo.InsertCarQO;
+import com.ddz.car.domain.qo.RentalQO;
 
 import java.util.List;
 import java.util.Map;
@@ -27,4 +28,7 @@ public interface CarService {
      * @return
      */
     int insertCar(InsertCarQO insertCarQO);
+
+    //    用户查询车辆
+    List<CarDTO>  checkCar(RentalQO rentalQO);
 }

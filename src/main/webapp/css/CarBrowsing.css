@@ -14,87 +14,106 @@ body{
   overflow-y: hidden;
   background-size: 100% 100%;
   position: relative;
-  /*background-image: url('../images/banner8.png');//桌面背景*/
+  background-image: url('../img/background3.jpg');//桌面背景
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
+}
+.logo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    filter:grayscale(80%);
 }
 /* header */
 .header{
-  width: 100%;
-  height: 120px;
-  /*background-image: url('../images/banner9.jpg');*/
-  background-size:50% 100%; 
-  border: 1px solid black;
+    width: 100%;
+    height: 120px;
+    background-size:50% 100%;
+    border: 1px solid #00F7DE;
+    background-color: #2b2b3885;
 }
 .header .logo{
-  margin-left: 30px;
-  height: 120px;
-  width:100px;
-  float: left;
-  text-align:center;
+    margin-left: 30px;
+    height: 120px;
+    width:100px;
+    float: left;
+    text-align:center;
 }
 .header .header2{
-  height: 70px;
-  width: 80%;
-  margin: 0px auto;
+    height: 70px;
+    width: 80%;
+    margin: 0px auto;
 }
 .header .header2 .spann1{
-  height: 70px;
-  width:100px;
-  margin: 0px auto;
-  font-size: 40px;
-  color: black;
-  font-family: '华文琥珀' ;
+    height: 70px;
+    width:100px;
+    margin: 0px auto;
+    font-size: 40px;
+    color: #4E5465;
 }
 .header .touxiang{
-  width: 180px;
-  height: 80px;
-  float: right;
-  margin-top: -50px;
+    width: 200px;
+    height: 80px;
+    float: right;
+    margin-top: -50px;
 }
 .header .touxiang>img{
-  width: 60px;
-  height: 60px;
-  margin-left: 30px;
-  float: left;
+    width: 60px;
+    height: 60px;
+    margin-left: 30px;
+    float: left;
 }
-.header .touxiang a:nth-child(2){ 
-  color: blue;
-  font-size: 14px;
-  text-decoration: none;
+.header .touxiang a:nth-child(2){
+    color: blue;
+    font-size: 14px;
+    text-decoration: none;
 }
 .header .touxiang a:nth-child(2):hover{
-  color:yellow;
+    color:yellow;
 }
 .header .touxiang .pic2{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-left: 30px;
-  border: 0px solid green;  
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 30px;
+    border: 0px solid green;
 }
 .header  .touxiang .pic2:hover{
-  opacity: 0.8;
+    opacity: 0.8;
 }
 /* 导航栏 */
 .nav{
-  width: 100%;
-  height: 40px;
-  background-color: white;
-  margin: 0px auto;
-  z-index: 100;
+    width: 92%;
+    height: 40px;
+    background-color: #00F7DE;
+    margin: 0 auto;
+    z-index: 100;
 }
-.nav li{
-  width: 225px;
-  display: inline-block;
-  margin-left: 60px;
+.nav .li1{
+    margin-left: 130px;
 }
 .nav li a{
-  text-decoration: none;
-  color: black;
-  text-align: center;
+    text-decoration: none;
+    text-align: center;
+    color: #2F4056;
 }
 .nav a:hover{
-  color: skyblue;
+    color: skyblue;
 }
+.one{
+    position: fixed;
+    top: 0px;
+    left: 75px;
+}
+.two{
+    position: fixed;
+    top: 50px;
+    left: 75px;
+}
+
 /* 侧导航栏 */
 .left-nav{
   width: 40px;
@@ -421,15 +440,17 @@ body{
 }
 /* 球星栏 */
 .chexing {
-  display: flex;
-  margin: 0px auto;
-  align-items: center;
-  width: 70%;
-  height: 550px;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  padding: 0px;
-  border: 1px solid black;
+    display: flex;
+    margin: 0px auto;
+    align-items: center;
+    width: 70%;
+    height: 550px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    padding: 0px;
+    border: 1px solid black;
+    background-color: white;
+    opacity: 0.9;
 }
 .card {
   color: inherit;
@@ -575,4 +596,65 @@ body{
 .chexing .front img{
   width: 100%;
   height: 100%;
+}
+
+/*荧光点点*/
+.wel{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+#git{
+    background: url("../img/midground.png");
+    -webkit-animation: mygit 100s linear infinite;
+    -o-animation: mygit 100s linear infinite;
+    animation: mygit 100s linear infinite;
+}
+/*荧光点点*/
+@keyframes mygit {
+    0%{
+        background-position: 0 0;
+        /*transform: translateY(0px);*/
+    }
+    100%{
+        background-position: 0 -600%;
+    }
+}
+@-o-keyframes mygit {
+    0%{
+        background-position: 0 0;
+        /*transform: translateY(0px);*/
+    }
+    100%{
+        background-position: 0 -600%;
+    }
+}
+@-moz-keyframes mygit {
+    0%{
+        background-position: 0 0;
+        /*transform: translateY(0px);*/
+    }
+    100%{
+        background-position: 0 -600%;
+    }
+}
+@-ms-keyframes mygit {
+    0%{
+        background-position: 0 0;
+        /*transform: translateY(0px);*/
+    }
+    100%{
+        background-position: 0 -600%;
+    }
+}
+@-webkit-keyframes mygit {
+    0%{
+        background-position: 0 0;
+        /*transform: translateY(0px);*/
+    }
+    100%{
+        background-position: 0 -600%;
+    }
 }

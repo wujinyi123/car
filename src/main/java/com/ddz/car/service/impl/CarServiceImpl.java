@@ -4,6 +4,7 @@ import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
 import com.ddz.car.domain.qo.InsertCarQO;
+import com.ddz.car.domain.qo.RentalQO;
 import com.ddz.car.mapper.CarMapper;
 import com.ddz.car.service.CarService;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public int insertCar(InsertCarQO insertCarQO) {
         return carMapper.insertCar(insertCarQO);
+    }
+
+    @Override
+    public List<CarDTO> checkCar(RentalQO rentalQO) {
+        return carMapper.checkCar(rentalQO);
     }
 
 

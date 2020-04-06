@@ -60,14 +60,17 @@ public class UserController {
     public LoginDTO login_check(HttpServletRequest request, LoginQO loginQO){
         UserDTO userDTO = userService.login_check(loginQO);
         if (userDTO!=null){
-            /*request.getSession().setAttribute("accountnumber",userDTO.getAccountnumber());
-            request.getSession().setAttribute("password", userDTO.getPassword());
-            request.getSession().setAttribute("unumber", userDTO.getUnumber());
-            request.getSession().setAttribute("uname", userDTO.getUname());
-            request.getSession().setAttribute("flag", userDTO.getFlag());*/
             request.getSession().setAttribute("thisUser",userDTO);
             return new LoginDTO("pass",userDTO.getFlag());
         }
         return new LoginDTO("unpass","账号、密码或用户类型有误");
+    }
+
+
+    @RequestMapping("/registerUser")
+    @ResponseBody
+    public int registerUser(UserInsertQO userInsertQO){
+        int result = userService.insertUser(userInsertQO);
+        return result;
     }
 }

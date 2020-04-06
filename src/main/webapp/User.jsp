@@ -23,9 +23,8 @@
 <div class="PublicHead clearfix">
     <div class="leftBox clearfix">
         <div class="companyLogo">
-            <img src="../img/xiaoyanzi.jpeg"/>
+            <img src="../img/logo.jpg" alt="">
         </div>
-        <!--<i class="iconfont icon-caidan"></i>-->
 
         <div class="companyText">
             汽车租赁商家管理平台
@@ -34,10 +33,10 @@
     <div class="RightBox clearfix">
         <div class="UserPhotoBox">
             <div class="UserPic">
-                <img src="images/user.jpg"/>
+                <img src="../img/xiaoyanzi.jpeg"/>
             </div>
             <div class="UserName">
-                商家
+                ${sessionScope.thisUser.uname}
             </div>
         </div>
         <a href="index.html">
@@ -190,7 +189,7 @@
         <div class=" wid400" style="width: 580px;">
             <div class="f_Head">
                 <span>添加用户信息</span>
-                <i class="Js_closeBtn glyphicon glyphicon-remove fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
+                <i class="Js_closeBtn glyphicon glyphicon-remove-circle fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
             </div>
             <div class="f_content">
                     <form class="layui-form layui-card-body" method="POST" id="form2">
@@ -209,20 +208,23 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户密码：</label>
                             <div class="layui-input-block">
-                                <input type="password" style="width: 200px;" id="a_password" name="a_password" required  lay-verify="required" placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
+                                <input type="password" style="width: 200px;" id="a_password" name="a_password" required  lay-verify="required" placeholder="请输入用户密码" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">再次输入：</label>
                             <div class="layui-input-block">
-                                <input type="password" style="width: 200px;" id="a_password2" name="a_password2" required  lay-verify="required" placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
+                                <input type="password" style="width: 200px;" id="a_password2" name="a_password2" required  lay-verify="required" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户邮箱：</label>
                             <div class="layui-input-block">
-                                <input type="text" lay-verify="email" style="width: 200px;" id="a_email" name="a_email"  placeholder="请输入汽车编号" autocomplete="off" class="layui-input">
+                                <input type="text" lay-verify="email" style="width: 200px;" id="a_email" name="a_email"  placeholder="请输入用户邮箱" autocomplete="off" class="layui-input">
                             </div>
+                        </div>
+                        <div class="col-xs-6" style="display: none;">
+                            <input type="text" name="registertime" id="registertime" />
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="width: 100px;">用户类型：</label>
@@ -252,6 +254,15 @@
     //新建Order
     layui.use(['form','layer'], function(){
         layui.form.on('submit(insertOrder)', function(dataForm){
+            var now = new Date();
+            var year = now.getFullYear(); //得到年份
+            var month = now.getMonth()+1;//得到月份
+            var date = now.getDate();//得到日期
+            var hour = now.getHours();//得到小时
+            var minu = now.getMinutes();//得到分钟
+            var sec = now.getSeconds();//得到秒
+            var time = year + "-" + month + "-" + date+ " " + hour + ":" + minu + ":" + sec;
+            $("#registertime").val(time);
             if ( $("#a_password").val()!=$("#a_password2").val()){
                 layui.layer.alert('<span style="font-size:16px;">两次密码输入不一致</span>', {icon: 1});
                 return false;
@@ -262,7 +273,8 @@
                 accountnumber:$('#a_accountnumber').val(),
                 password:$('#a_password').val(),
                 email:$('#a_email').val(),
-                flag:$('#a_flag').val()
+                flag:$('#a_flag').val(),
+                registertime:$("#registertime").val()
             }
             $.ajax({
                 type: "POST",
@@ -286,7 +298,8 @@
                       $('#a_password').val(''),
                       $('#a_password2').val(''),
                       $('#a_email').val(''),
-                      $('#a_flag').val('')
+                      $('#a_flag').val(''),
+                      $("#registertime").val('')
                     $(".insertFloat").fadeOut(200);
                 },
                 error:function(e){
@@ -416,25 +429,25 @@
     function addFloat(){
         $(".insertFloat").fadeIn(200);
     }
-    // 插入车辆数据
-    function insertUser(){
-        if ( $("#a_password").val()!=$("#a_password2").val()){
-            alert("您两次输入的密码不一致！！！");
-            return false;
-            $(".insertFloat").fadeOut(200);
-        }
-        $.ajax({
-            type: "POST",
-            url: "/user/insertUser",
-            data: $("#form2").serialize(),
-            success: function (result) {
-                $(".insertFloat").fadeOut(200);
-                if (result!=0){
-                    pageUser();
-                }
-            }
-        });
-    }
+    // // 插入用户数据
+    // function insertUser(){
+    //     if ( $("#a_password").val()!=$("#a_password2").val()){
+    //         alert("您两次输入的密码不一致！！！");
+    //         return false;
+    //         $(".insertFloat").fadeOut(200);
+    //     }
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/user/insertUser",
+    //         data: $("#form2").serialize(),
+    //         success: function (result) {
+    //             $(".insertFloat").fadeOut(200);
+    //             if (result!=0){
+    //                 pageUser();
+    //             }
+    //         }
+    //     });
+    // }
 </script>
 </body>
 </html>

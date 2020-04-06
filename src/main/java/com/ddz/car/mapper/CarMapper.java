@@ -4,6 +4,7 @@ import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
 import com.ddz.car.domain.qo.InsertCarQO;
+import com.ddz.car.domain.qo.RentalQO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -31,4 +32,7 @@ public interface CarMapper {
      * @return
      */
     int insertCar(InsertCarQO insertCarQO);
+
+//    用户查询车辆
+    List<CarDTO>  checkCar(RentalQO rentalQO);
 }

@@ -64,4 +64,38 @@
         insert into car(brand,cname,price,seatnumber,state)
         values (#{brand},#{cname},#{price},#{seatnumber},'1')
     </insert>
+
+    <select id="checkCar" parameterType="com.ddz.car.domain.qo.RentalQO" resultType="com.ddz.car.domain.dto.CarDTO">
+        select
+        cs.cnumber,
+        cs.brand,
+        cs.cname,
+        cs.price,
+        cs.seatnumber,
+        cs.carphoto,
+        cs.state
+        from car cs
+        left join orders o
+        on cs.cnumber = o.cnumber
+        WHERE
+        cs.state = '1'
+        <choose>
+            <when test="pcartime!=null and pcartime!=''">and (o.pay is null or ( o.pay = '1'and #{pcartime}>o.rcartime ))</when>
+            <otherwise>and (o.pay is null or o.pay = '1')</otherwise>
+        </choose>
+        <if test="brand!=null and brand!='0'.toString()">
+            and cs.brand=#{brand}
+        </if>
+        <if test="seatnumber!=null and seatnumber!='0'.toString()">
+            and cs.seatnumber=#{seatnumber}
+        </if>
+        <choose>
+            <when test="price=='1'.toString()">and cs.price &lt; 100</when>
+            <when test="price=='2'.toString()">and cs.price &gt;= 100 and cs.price &lt; 200</when>
+            <when test="price=='3'.toString()">and cs.price &gt;= 200 and cs.price &lt; 300</when>
+            <when test="price=='4'.toString()">and cs.price &gt;= 300</when>
+            <otherwise></otherwise>
+        </choose>
+    </select>
+
 </mapper>

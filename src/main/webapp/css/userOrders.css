@@ -10,7 +10,6 @@ html{
   height: 100%;
 }
 body{
-  background-attachment: fixed;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -29,15 +28,13 @@ body{
   border-radius: 50%;
   filter:grayscale(80%);
 }
-
 /* header */
 .header{
   width: 100%;
   height: 120px;
-  background-size:100% 100%;
+  background-size:50% 100%;
   border: 1px solid #00F7DE;
   background-color: #2b2b3885;
-  /*background-image: url("../img/backwidth3.jpg");*/
 }
 .header .logo{
   margin-left: 30px;
@@ -70,7 +67,7 @@ body{
   margin-left: 30px;
   float: left;
 }
-.header .touxiang a:nth-child(2){ 
+.header .touxiang a:nth-child(2){
   color: blue;
   font-size: 14px;
   text-decoration: none;
@@ -83,7 +80,7 @@ body{
   height: 60px;
   border-radius: 50%;
   margin-left: 30px;
-  border: 0px solid green;  
+  border: 0px solid green;
 }
 .header  .touxiang .pic2:hover{
   opacity: 0.8;
@@ -117,6 +114,7 @@ body{
   top: 50px;
   left: 75px;
 }
+
 /* 侧导航栏 */
 .left-nav{
   width: 40px;
@@ -151,81 +149,22 @@ body{
   margin: 0px auto;
   background-color: #eee;
 }
-/*城市选择*/
-.sousuolan .citychoise{
-  width: 300px;
-  height: 100px;
-  float: left;
-  margin-left: 40px;
-}
-.sousuolan .citychoise label{
-  height: 30px;
-  width: 80px;
-  float: left;
-  margin-top: 38px;
-  font-weight: bold;
-}
-.sousuolan .citychoise .chengshixuanze{
-  width: 200px;
-  height: 50px;
-  float: left;
-  margin-top: 30px;
-}
-.sousuolan .citychoise .chengshixuanze .sheng,.shi{
-  width: 100px;
-  height: 50px;
-  float: left;
-}
 
-/*时间选择*/
-
-.sousuolan .timechoise .StratTime,.EndTime{
-  width: 300px;
-  height: 50px;
-  float: left;
-  margin-left: 30px;
-  margin-top: 30px;
-}
-.sousuolan .timechoise .demo .input{
-  width: 100px;
-  height: 35px;
-  border-radius:5px;
-  border: 0px;
-}
-.sousuolan .timechoise .demo p{
-  font-weight: bold;
-}
-
-/*提交按钮*/
-.sousuolan .check{
-  width: 100px;
-  height: 35px;
-  margin-top: 30px;
-  margin-left: 100px;
-}
-/* 筛选 */
-.shaixuan{
+/*订单内容*/
+.content{
+  z-index: 999;
   width: 70%;
-  height: 80px;
-  margin: 0px auto;
   background-color: #eee;
+  opacity: 0.9;
+  margin: 0px auto;
 }
-.shaixuan select{
-  width: 150px;
-  height: 35px;
-  border-radius: 5px;
-}
-.layui-inline{
-  width: 290px;
-  margin-left: 35px;
+.content .c_head{
+  width: 100%;
+  height: 50px;
+  text-align: center;
 }
 
-/*展示内容*/
-#show{
-  width: 70%;
-  margin: 0px auto;
-  background-color: white;
-}
+/*表格样式*/
 .showtable{
   text-align: center;
 }
@@ -243,8 +182,8 @@ body{
   border-left: 0;
 }
 .td1{
-  width: 300px;
-  height: 180px;
+  width: 200px;
+  height: 120px;
 }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
@@ -255,3 +194,63 @@ body{
   background-color: #F5F5F5;
 }
 
+/*荧光点点*/
+.wel{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+#git{
+  background: url("../img/midground.png");
+  -webkit-animation: mygit 100s linear infinite;
+  -o-animation: mygit 100s linear infinite;
+  animation: mygit 100s linear infinite;
+}
+/*荧光点点*/
+@keyframes mygit {
+  0%{
+    background-position: 0 0;
+    /*transform: translateY(0px);*/
+  }
+  100%{
+    background-position: 0 -600%;
+  }
+}
+@-o-keyframes mygit {
+  0%{
+    background-position: 0 0;
+    /*transform: translateY(0px);*/
+  }
+  100%{
+    background-position: 0 -600%;
+  }
+}
+@-moz-keyframes mygit {
+  0%{
+    background-position: 0 0;
+    /*transform: translateY(0px);*/
+  }
+  100%{
+    background-position: 0 -600%;
+  }
+}
+@-ms-keyframes mygit {
+  0%{
+    background-position: 0 0;
+    /*transform: translateY(0px);*/
+  }
+  100%{
+    background-position: 0 -600%;
+  }
+}
+@-webkit-keyframes mygit {
+  0%{
+    background-position: 0 0;
+    /*transform: translateY(0px);*/
+  }
+  100%{
+    background-position: 0 -600%;
+  }
+}

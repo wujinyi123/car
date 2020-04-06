@@ -70,8 +70,45 @@
 
     <!--插入订单信息-->
     <insert id="insertOrder" parameterType="com.ddz.car.domain.qo.OrderInsertQO">
-        insert into Orders (cnumber,unumber,address,uprice,tprice,pcartime,rcartime,ostate,state)
-        values (#{cnumber},#{unumber},#{address},#{uprice},0,#{pcartime},null,'0','1')
+        insert into Orders (cnumber,unumber,address,uprice,tprice,pcartime,rcartime,ostate,state,pay)
+        values (#{cnumber},#{unumber},#{address},#{uprice},0,#{pcartime},null,'0','1','0')
     </insert>
 
+    <!--用户预约-->
+    <insert id="reserveOrder" parameterType="com.ddz.car.domain.qo.ReserveQO">
+        insert into Orders (cnumber,unumber,address,uprice,tprice,pcartime,rcartime,ostate,state,pay)
+        values (#{cnumber},#{unumber},concat(#{input_province},if(#{input_city}=null,'',#{input_city})),#{price}
+        <choose>
+            <when test="rcartime!=null and rcartime!=''">,#{price}*DATEDIFF(#{rcartime},#{pcartime}),#{pcartime},#{rcartime},'1','1','0')</when>
+            <otherwise>,null,#{pcartime},null,'0','1','0')</otherwise>
+        </choose>
+    </insert>
+
+    <!--用户查询订单-->
+    <select id="userOrders" parameterType="int" resultType="com.ddz.car.domain.dto.UserOrdersDTO">
+        select
+        cs.carphoto,
+        cs.cname,
+        onumber,
+        uprice,
+        tprice,
+        pcartime,
+        rcartime,
+        pay
+        from Orders o,car cs
+        where o.cnumber=cs.cnumber
+        and unumber = #{unumber}
+    </select>
+
+    <!--用户结账-->
+    <update id="accountOrder" parameterType="com.ddz.car.domain.qo.AccountQO">
+        update Orders
+        set tprice = uprice*DATEDIFF(#{nowdate},pcartime) , rcartime = #{nowdate} , pay = '1'
+        where onumber = #{onumber}
+    </update>
+
+    <!--个人中心-->
+    <select id="orderCount" parameterType="int" resultType="com.ddz.car.domain.dto.PersonalDTO">
+      select pay from Orders where unumber = #{unumber}
+    </select>
 </mapper>

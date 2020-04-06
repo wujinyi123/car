@@ -1,12 +1,11 @@
 package com.ddz.car.service;
 
 import com.ddz.car.domain.dto.OrderDTO;
-import com.ddz.car.domain.qo.OrderInsertQO;
-import com.ddz.car.domain.qo.OrderQO;
-import com.ddz.car.domain.qo.OrderUpdateQO;
+import com.ddz.car.domain.dto.PersonalDTO;
+import com.ddz.car.domain.dto.UserOrdersDTO;
+import com.ddz.car.domain.qo.*;
 
 import java.util.List;
-import java.util.Map;
 
 public interface OrderService {
     List<OrderDTO> listOrder(OrderQO orderQO);
@@ -19,4 +18,16 @@ public interface OrderService {
 
     //    插入订单信息
     int insertOrder(OrderInsertQO orderInsertQO);
+
+    //用户预定
+    int reserveOrder(ReserveQO reserveQO);
+
+    //    用户订单查询
+    List<UserOrdersDTO> userOrders(int unumber);
+
+    //    用户结账
+    int accountOrder(AccountQO accountQO);
+
+    //    个人中心
+    List<PersonalDTO> orderCount(int unumber);
 }

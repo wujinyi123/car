@@ -23,9 +23,8 @@
 <div class="PublicHead clearfix">
     <div class="leftBox clearfix">
         <div class="companyLogo">
-            <img src="images/dongruan.jpg"/>
+            <img src="../img/logo.jpg" alt="">
         </div>
-        <!--<i class="iconfont icon-caidan"></i>-->
 
         <div class="companyText">
             汽车租赁商家管理平台
@@ -78,7 +77,6 @@
             <div class="InquireTableBox">
                 <iframe allowtransparency="true" frameborder="0" width="180" height="36" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=0&v=0&d=3&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=71267&w=180&h=36&align=center"></iframe>
                 <!--查询到的表格-->
-
                 <div class="InquireSelectTable">
                     <form class="layui-form" method="POST" id="examForm">
                         <div class="layui-inline">
@@ -178,7 +176,7 @@
         <div class=" wid400">
             <div class="f_Head">
                 <span>添加汽车信息</span>
-                <i class="Js_closeBtn glyphicon glyphicon-remove fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
+                <i class="Js_closeBtn glyphicon glyphicon-remove-circle fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
             </div>
             <div class="f_content">
                 <form class="layui-form layui-card-body" method="POST" id="form2">

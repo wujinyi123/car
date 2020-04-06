@@ -19,4 +19,5 @@ public class UserDTO {
     private String flag;
     private String email;
     private String state;
+    private String registertime;
 }

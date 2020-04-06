@@ -18,24 +18,25 @@
     <script src="js/bootstrap.js"></script>
 </head>
 <body>
+<!--荧光点点-->
+<div class="wel" id="git"></div>
 <!-- 头部 -->
 <div class="header">
-    <div class="logo">待补充</div>
+    <div class="logo"><img src="../img/logo.jpg" alt=""></div>
     <div class="header2">
         <div class="spann1">Car</div>
         <!-- 导航栏 -->
         <nav class="nav">
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
-            <li><a href="rentalOnline.jsp"><span class="glyphicon glyphicon-globe"></span>&nbsp;在线租车</a></li>
-            <li><a href="carBrowsing.jsp"><span class="glyphicon glyphicon-picture"></span>&nbsp;车型查询</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;我的订单</a></li>
-            <li><a href="#" target="_blank"><span class="glyphicon glyphicon-user"></span>&nbsp;个人中心</a></li>
+            <li class="li1 col-md-2"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+            <li class="col-md-2"><a href="rentalOnline.jsp"><span class="glyphicon glyphicon-globe"></span>&nbsp;在线租车</a></li>
+            <li class="col-md-2"><a href="carBrowsing.jsp"><span class="glyphicon glyphicon-picture"></span>&nbsp;车型查询</a></li>
+            <li class="col-md-2"><a href="userOrders.jsp"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;我的订单</a></li>
+            <li class="col-md-2"><a href="Personal.jsp" target="_blank"><span class="glyphicon glyphicon-user"></span>&nbsp;个人中心</a></li>
         </nav>
     </div>
-    <div class="touxiang">
-        <a href="javascript:;" class="tan">登录</a>
-        <a href="javascript:;" class="tan">注册</a>
-        <a href="javascript:;" class="tan"><span><img src="images/timg (1).jpg" alt="" class="pic2"></span></a>
+    <div class="touxiang" id="touxiang">
+        <a href="javascript:;" class="tan" style="color: white;">${sessionScope.thisUser.uname}，欢迎您</a>
+        <a href="javascript:;" class="tan"><span><img src="../img/xiaoyanzi.jpeg" alt="" class="pic2"></span></a>
     </div>
 </div>
 <!-- 固定导航栏 -->

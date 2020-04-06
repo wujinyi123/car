@@ -23,9 +23,8 @@
 <div class="PublicHead clearfix">
     <div class="leftBox clearfix">
         <div class="companyLogo">
-            <img src="../img/car/2.jpg"/>
+            <img src="../img/logo.jpg" alt="">
         </div>
-        <!--<i class="iconfont icon-caidan"></i>-->
 
         <div class="companyText">
             汽车租赁商家管理平台
@@ -34,10 +33,10 @@
     <div class="RightBox clearfix">
         <div class="UserPhotoBox">
             <div class="UserPic">
-                <img src="images/user.jpg"/>
+                <img src="../img/xiaoyanzi.jpeg"/>
             </div>
             <div class="UserName">
-                商家
+                ${sessionScope.thisUser.uname}
             </div>
         </div>
         <a href="index.html">
@@ -196,7 +195,7 @@
         <div class=" wid400">
             <div class="f_Head">
                 <span>添加订单信息</span>
-                <i class="Js_closeBtn glyphicon glyphicon-remove fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
+                <i class="Js_closeBtn glyphicon glyphicon-remove-circle fr" style="float: right;width: 25px;height: 25px;margin-right: -5px;margin-top: 5px;"></i>
             </div>
             <div class="f_content">
                     <form class="layui-form layui-card-body" method="POST" id="form2">
@@ -246,8 +245,6 @@
 
 <!-- 弹框的编辑数值-->
 <script type="text/javascript">
-
-
     //新建Order
     layui.use(['form','layer'], function(){
         layui.form.on('submit(insertOrder)', function(dataForm){

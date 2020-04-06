@@ -58,10 +58,10 @@
         where unumber = #{unumber}
     </update>
 
-    <!--插入订单信息-->
+    <!--插入用户信息-->
     <insert id="insertUser" parameterType="com.ddz.car.domain.qo.UserInsertQO">
-        insert into Users (unumber,uname,accountnumber,password,blacklist,flag,email,state)
-        values (#{unumber},#{uname},#{accountnumber},#{password},0,#{flag},#{email},1)
+        insert into Users (unumber,uname,accountnumber,password,blacklist,flag,email,state,registertime)
+        values (#{unumber},#{uname},#{accountnumber},#{password},0,#{flag},#{email},1,#{registertime})
     </insert>
 
     <!--登录验证-->

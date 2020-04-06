@@ -2,9 +2,9 @@ package com.ddz.car.service.impl;
 
 
 import com.ddz.car.domain.dto.OrderDTO;
-import com.ddz.car.domain.qo.OrderInsertQO;
-import com.ddz.car.domain.qo.OrderQO;
-import com.ddz.car.domain.qo.OrderUpdateQO;
+import com.ddz.car.domain.dto.PersonalDTO;
+import com.ddz.car.domain.dto.UserOrdersDTO;
+import com.ddz.car.domain.qo.*;
 import com.ddz.car.mapper.OrderMapper;
 import com.ddz.car.service.OrderService;
 import org.springframework.stereotype.Service;
@@ -37,4 +37,25 @@ public class OrderServiceImpl implements OrderService {
     public int insertOrder(OrderInsertQO orderInsertQO) {
         return orderMapper.insertOrder(orderInsertQO);
     }
+
+    @Override
+    public int reserveOrder(ReserveQO reserveQO) {
+        return orderMapper.reserveOrder(reserveQO);
+    }
+
+    @Override
+    public List<UserOrdersDTO> userOrders(int unumber) {
+        return orderMapper.userOrders(unumber);
+    }
+
+    @Override
+    public int accountOrder(AccountQO accountQO) {
+        return orderMapper.accountOrder(accountQO);
+    }
+
+    @Override
+    public List<PersonalDTO> orderCount(int unumber) {
+        return orderMapper.orderCount(unumber);
+    }
+
 }

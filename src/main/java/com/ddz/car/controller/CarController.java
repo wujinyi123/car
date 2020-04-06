@@ -6,6 +6,7 @@ import com.ddz.car.domain.dto.CarDTO;
 import com.ddz.car.domain.qo.CarQO;
 import com.ddz.car.domain.qo.CarUpdateQO;
 import com.ddz.car.domain.qo.InsertCarQO;
+import com.ddz.car.domain.qo.RentalQO;
 import com.ddz.car.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,5 +86,13 @@ public class CarController {
     @ResponseBody
     public int insertCar(@RequestBody @Valid InsertCarQO insertCarQO) {
         return carService.insertCar(insertCarQO);
+    }
+
+//    用户查询车辆
+    @PostMapping("/checkCar")
+    @ResponseBody
+    public List<CarDTO> checkCar(RentalQO rentalQO){
+        List<CarDTO> carDTOS = carService.checkCar(rentalQO);
+        return carDTOS;
     }
 }

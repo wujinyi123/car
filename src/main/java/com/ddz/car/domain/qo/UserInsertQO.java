@@ -17,4 +17,5 @@ public class UserInsertQO {
     private String password;
     private String flag;
     private String email;
+    private String registertime;
 }

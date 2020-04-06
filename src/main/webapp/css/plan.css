@@ -10,8 +10,8 @@ body { /* background: #f1f1f1; */ }
 .PublicHead .leftBox > div { display: inline-block; }
 .PublicHead .leftBox i { font-size: 23px; vertical-align: middle; color: #fff; margin: 0 20px; }
 
-.PublicHead .leftBox .companyLogo { width: 98px; height: 40px; background: #fff; margin: 10px 0; float: left; }
-.PublicHead .leftBox .companyLogo img { width: 100%; }
+.PublicHead .leftBox .companyLogo { width: 50px; height: 50px; float: left;border-radius: 50%; }
+.PublicHead .leftBox .companyLogo img { width: 100%; filter:grayscale(80%);border-radius: 50%;}
 .PublicHead .leftBox .companyText { font-weight: bold; font-size: 18px; color: #fff; margin: 0 0 0 20px; }
 .PublicHead .RightBox { display: inline-block; float: right; }
 .PublicHead .RightBox .UserPhotoBox { display: inline-block; margin: 6.5px 25px; vertical-align: middle; }

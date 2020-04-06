@@ -12,7 +12,9 @@
     <title>登录界面</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href="layui/css/layui.css" rel="stylesheet"/>
     <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="layui/layui.js"></script>
 </head>
 
 <body class="login_body">
@@ -93,9 +95,6 @@
             <div class="col-xs-6 login_btn_div">
                 <input type="button" class="sub_btn" value="重置" id="reset" onclick="reset1()"/>
             </div>
-            <%--登录成功弹框--%>
-            <div class="success">
-            </div>
         </div>
     </form>
 
@@ -113,7 +112,7 @@
                     用户姓名:
                 </div>
                 <div class="col-xs-6">
-                    <input type="text" name="a_uname" id="name_r"  placeholder="请输入用户名" onBlur="javascript:ok_or_errorByRegister(this)" />
+                    <input type="text" name="uname" id="name_r"  placeholder="请输入用户名" onBlur="javascript:ok_or_errorByRegister(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -127,7 +126,7 @@
                     用户账号:
                 </div>
                 <div class="col-xs-6">
-                    <input type="text" name="a_accountnumber" id="accountnumber_r" placeholder="请输入用户账号" onBlur="javascript:ok_or_errorByRegister(this)" />
+                    <input type="text" name="accountnumber" id="accountnumber_r" placeholder="请输入用户账号" onBlur="javascript:ok_or_errorByRegister(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -141,7 +140,7 @@
                     用户密码:
                 </div>
                 <div class="col-xs-6">
-                    <input type="password" name="a_password" id="psd_r" placeholder="请输入密码" onBlur="javascript:ok_or_errorByRegister(this)" />
+                    <input type="password" name="password" id="psd_r" placeholder="请输入密码" onBlur="javascript:ok_or_errorByRegister(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -155,7 +154,7 @@
                     确认密码:
                 </div>
                 <div class="col-xs-6">
-                    <input type="password" name="a_password2" id="affirm_psd" placeholder="请确认密码" onBlur="javascript:ok_or_errorByRegister(this)" />
+                    <input type="password" name="password2" id="affirm_psd" placeholder="请确认密码" onBlur="javascript:ok_or_errorByRegister(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -169,7 +168,7 @@
                     用户邮箱:
                 </div>
                 <div class="col-xs-6">
-                    <input type="text" name="a_email" id="email_r" placeholder="&nbsp;&nbsp;请输入用户邮箱" onBlur="javascript:ok_or_errorByRegister(this)" />
+                    <input type="text" name="email" id="email_r" placeholder="&nbsp;&nbsp;请输入用户邮箱" onBlur="javascript:ok_or_errorByRegister(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -177,6 +176,9 @@
                 <div class="col-xs-1 error_cuo">
                     ×
                 </div>
+            </div>
+            <div class="col-xs-6" style="display: none;">
+                <input type="text" name="registertime" id="registertime" />
             </div>
             <div class="nav register_psdnav">
                 <div class="col-xs-4">
@@ -191,7 +193,7 @@
             </div>
 
             <div class="col-xs-6 register_btn_div">
-                <input type="submit" class="sub_btn" value="注册" id="register" />
+                <input type="button" class="sub_btn" value="注册" id="register"/>
             </div>
             <div class="col-xs-6 register_btn_div">
                 <input type="button" class="sub_btn" value="重置" id="reset2" onclick="reset()" />
@@ -293,7 +295,6 @@
                         url: "/user/login",
                         data: $("#form1").serialize(),
                         success: function (data) {
-                            // alert(data.state);
                             login_check(data);
                         }
                     });
@@ -357,7 +358,7 @@
                 return false;
             } else {
                 if(reg.test(email_r)){
-                    $('.register').submit();
+                    register();
                 }else{
                     email_state.parent().next().css("display", "none");
                     name_r_state.parent().next().next().css("display", "none");
@@ -458,20 +459,13 @@
 
     // 登录验证
     function login_check(data){
-        <%--alert(data.state);--%>
-        <%--var test = <%= request.getSession().getAttribute("flag")%>;--%>
-        <%--var test2 = <%= request.getSession().getAttribute("uname")%>;--%>
-        <%--var test3 = <%= request.getSession().getAttribute("accountnumber")%>;--%>
-        <%--alert(test);--%>
-        <%--alert(test2);--%>
-        <%--alert(test3);--%>
         setTimeout(function () {
             if (data.state == 'pass') {
                 //登录成功
-                // alert("拿到值了");
-                $(".success").fadeIn(1000);
-                $(".success").html("登录成功<br /><br />欢迎回来");
-                // alert(request.getSession().getAttribute("flag"));
+                //  alert("登录成功<br>欢迎回来");
+                layui.use('layer', function () {
+                    layui.layer.alert('登录成功<br>欢迎回来');
+                });
                 setTimeout(function () {
                     if (data.msg=='1') {
                         window.location.href="index.jsp";
@@ -479,14 +473,54 @@
                     else if(data.msg=='0'){
                         window.location.href="Car.jsp";
                     }
-                }, 1300);
+                }, 1000);
             } else {
+                layui.use('layer', function () {
+                    layui.layer.alert(data.msg);
+                });
                 setTimeout(function () {
-                    AjaxErro({"Status":"Erro","Erro":data.msg});
+                    window.location.href="Login.jsp";
                 },1000);
-                // window.location.href="Login.jsp";
             }
-        }, 1300);
+        },1000);
+    }
+
+    // 注册
+    function register(){
+        var now = new Date();
+        var year = now.getFullYear(); //得到年份
+        var month = now.getMonth()+1;//得到月份
+        var date = now.getDate();//得到日期
+        var hour = now.getHours();//得到小时
+        var minu = now.getMinutes();//得到分钟
+        var sec = now.getSeconds();//得到秒
+        var time = year + "-" + month + "-" + date+ " " + hour + ":" + minu + ":" + sec;
+        $("#registertime").val(time);
+            if ( $("#psd_r").val()!=$("#affirm_psd").val()){
+                alert("您两次输入的密码不一致！！！");
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/user/registerUser",
+                data: $("#form2").serialize(),
+                success: function (result) {
+                    if (result!=0){
+                        layui.use('layer', function () {
+                            layui.layer.alert('注册成功，正在跳转。。。');
+                        });
+                        setTimeout(function () {
+                            window.location.href="Login.jsp";
+                        },1000);
+                    }
+                    else{
+                        layui.use('layer', function () {
+                            layui.layer.alert('注册失败');
+                        });
+                        return false;
+                    }
+                }
+            });
     }
 </script>
 </body>
