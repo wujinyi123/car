@@ -74,7 +74,8 @@
         blacklist,
         flag,
         email,
-        state
+        state,
+        registertime
         from Users
         where state = '1' and blacklist = '0' and accountnumber = #{accountnumber} and password = #{password} and flag = #{flag}
     </select>

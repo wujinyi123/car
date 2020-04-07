@@ -32,18 +32,18 @@
     </div>
     <div class="RightBox clearfix">
         <div class="UserPhotoBox">
-            <div class="UserPic">
-                <img src="../img/xiaoyanzi.jpeg"/>
-            </div>
             <div class="UserName">
                 ${sessionScope.thisUser.uname}
             </div>
+            <div class="UserPic">
+                <img src="../img/xiaoyanzi.jpeg"/>
+            </div>
         </div>
-        <a href="index.html">
+        <a href="Login.jsp">
             <div class="dropOutBox">
-                <i class="iconfont icon-app_icons--">
+                <span>注销</span>
+                <i class="glyphicon glyphicon-off">
                 </i>
-                <span>退出</span>
             </div>
         </a>
     </div>
@@ -250,6 +250,28 @@
 
 <!-- 弹框的编辑数值-->
 <script type="text/javascript">
+    // 跳转权限
+    function jump(){
+        var unumber = "${sessionScope.thisUser.unumber}";
+        var flag = "${sessionScope.thisUser.flag}"
+        if(unumber==null || unumber=='' ){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">您未登录</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+        if(flag=='1' || flag == 1){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">非管理员，无权访问</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+    }
+    jump();
 
     //新建Order
     layui.use(['form','layer'], function(){
@@ -429,25 +451,7 @@
     function addFloat(){
         $(".insertFloat").fadeIn(200);
     }
-    // // 插入用户数据
-    // function insertUser(){
-    //     if ( $("#a_password").val()!=$("#a_password2").val()){
-    //         alert("您两次输入的密码不一致！！！");
-    //         return false;
-    //         $(".insertFloat").fadeOut(200);
-    //     }
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "/user/insertUser",
-    //         data: $("#form2").serialize(),
-    //         success: function (result) {
-    //             $(".insertFloat").fadeOut(200);
-    //             if (result!=0){
-    //                 pageUser();
-    //             }
-    //         }
-    //     });
-    // }
+
 </script>
 </body>
 </html>

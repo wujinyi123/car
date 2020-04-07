@@ -37,10 +37,40 @@
     <div class="touxiang" id="touxiang">
         <a href="javascript:;" class="tan" style="color: white;">${sessionScope.thisUser.uname}，欢迎您</a>
         <a href="javascript:;" class="tan"><span><img src="../img/xiaoyanzi.jpeg" alt="" class="pic2"></span></a>
+        <a href="Login.jsp" style="color: red; text-decoration:none;cursor: pointer">
+            <div class="dropOutBox">
+                <span>注销账号</span>
+                <i class="glyphicon glyphicon-off">
+                </i>
+            </div>
+        </a>
     </div>
 </div>
 <!-- 固定导航栏 -->
 <script>
+    // 跳转权限
+    function jump(){
+        var unumber = "${sessionScope.thisUser.unumber}";
+        var flag = "${sessionScope.thisUser.flag}"
+        if(unumber==null || unumber=='' ){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">您未登录</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+        if(flag=='0' || flag == 0){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">无权访问</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+    }
+    jump();
+
     $(window).scroll(function(){
         var h=$(window).scrollTop();
         if(h>=100){
@@ -57,11 +87,11 @@
 <div class="left-nav">
     <ul>
         <a href="#"><li class="nav-span glyphicon glyphicon-chevron-up" title='返回顶部'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-thumbs-up" title='用户反馈'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-comment" title='社区'></li></a>
-        <a href="javascript:;" class="tan"><li class="nav-span glyphicon glyphicon-user" title='个人中心'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-list-alt" title='订单'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-signal" title='数据'></li></a>
+        <a href="index.jsp"><li class="nav-span glyphicon glyphicon-home" title='首页'></li></a>
+        <a href="rentalOnline.jsp"><li class="nav-span glyphicon glyphicon-shopping-cart" title='在线租车'></li></a>
+        <a href="Personal.jsp" class="tan"><li class="nav-span glyphicon glyphicon-user" title='个人中心'></li></a>
+        <a href="userOrders.jsp"><li class="nav-span glyphicon glyphicon-list-alt" title='订单'></li></a>
+        <a href="carBrowsing.jsp"><li class="nav-span glyphicon glyphicon-signal" title='数据'></li></a>
     </ul>
 </div>
 
@@ -69,13 +99,13 @@
 <div class="box container">
     <div class="list">
         <ul>
-            <li class="p7"><a href="javascript:;"><video src="video/guanggao.mp4" controls="controls"></video></a></li>
-            <li class="p6"><a href="javascript:;"><video src="vedio/【G1集锦】猛龙100-108雄鹿 字母哥24＋14洛瑞空砍7记三分 2019-08-12 14_09_07.mp4" controls="controls"></video></a></li>
-            <li class="p5"><a href="javascript:;"><video src="vedio/字母哥生涯扣篮十佳球 骑扣伊巴卡三分线三步灌篮 2019-08-12 14_55_11.mp4" controls="controls"></video></a></li>
-            <li class="p4"><a href="javascript:;"><video src="vedio/字母哥本赛季20佳球  未来联盟第一人变态隔扣像野兽 2019-08-12 14_59_06.mp4" controls="controls"></video></a></li>
-            <li class="p3"><a href="javascript:;"><video src="vedio/字母哥18-19赛季季后赛全回顾 隔人暴扣+飞天大帽尽显爆炸体质 2019-08-12 13_56_43.mp4" controls="controls"></video></a></li>
-            <li class="p2"><a href="javascript:;"><video src="vedio/东决G2字母哥30分击败猛龙高光集锦！ 2019-08-12 14_15_25.mp4" controls="controls"></video></a></li>
-            <li class="p1"><a href="javascript:;"><video src="vedio/2018年度50佳球 字母哥复制世纪之扣詹皇季后赛两度绝杀 2019-08-12 14_54_38.mp4" controls="controls"></video></a></li>
+            <li class="p7"><a href="javascript:;"><img src="../img/car/car1.jpg"></a></li>
+            <li class="p6"><a href="javascript:;"><img src="../img/car/car2.jpg"></a></li>
+            <li class="p5"><a href="javascript:;"><img src="../img/car/car3.jpg"></a></li>
+            <li class="p4"><a href="javascript:;"><img src="../img/car/car4.jpg"></a></li>
+            <li class="p3"><a href="javascript:;"><img src="../img/car/car5.jpg"></a></li>
+            <li class="p2"><a href="javascript:;"><img src="../img/car/car6.jpg"></a></li>
+            <li class="p1"><a href="javascript:;"><img src="../img/car/car7.jpg"></a></li>
         </ul>
     </div>
     <a href="javascript:;" class="prev btn"><</a>
@@ -91,14 +121,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    // 跳转权限
-    function jump(){
-        var a = ${sessionScope.thisUser};
-        if(a==null){
-            window.location.href="Login.jsp";
-        }
-    }
-    jump();
 
     // 轮播图
     var $a=$(".buttons a");

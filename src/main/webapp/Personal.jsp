@@ -31,7 +31,16 @@
                     </div>
                     <div class="word">
                         <div class="user">
-                            <div><p class="h3">筱剑仁，欢迎您</p></div>
+                            <div>
+                                <p class="h3">${sessionScope.thisUser.uname}，欢迎您</p>
+                                <a href="Login.jsp" style="color: red; text-decoration:none;cursor: pointer">
+                                    <div class="dropOutBox">
+                                        <span>注销账号</span>
+                                        <i class="glyphicon glyphicon-off">
+                                        </i>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,9 +100,31 @@
 </body>
 <%--个人中心信息显示--%>
 <script>
+    // 跳转权限
+    function jump(){
+        var unumber = "${sessionScope.thisUser.unumber}";
+        var flag = "${sessionScope.thisUser.flag}"
+        if(unumber==null || unumber=='' ){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">您未登录</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+        if(flag=='0' || flag == 0){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">无权访问</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+    }
+    jump();
+
     function orderCount(){
-        var unumber = '4';
-        <%--var unumber = ${sessionScope.thisUser.unumber};--%>
+        var unumber = "${sessionScope.thisUser.unumber}";
         $.ajax({
             type: "POST",
             url: "/order/orderCount?unumber="+unumber,
@@ -118,7 +149,7 @@
                     $("#dealcount").html("0");
                     $("#undealcount").html("0");
                     layui.use('layer', function () {
-                        layui.layer.alert('<span style="font-size:16px;">无订单信息</span>', {icon: 1});
+                        layui.layer.alert('<span style="font-size:16px;">您无订单信息</span>', {icon: 2});
                     });
                     setTimeout(function () {
                         layer.close(layer.index);
@@ -132,10 +163,10 @@
     // 用户星级和注册时间
     function starandtime(Dealcount){
         // 获取用户注册时间
-        <%--var registertime = ${sessionScope.thisUser.registertime};--%>
-        var registertime ='2019/05/01 00:00:00';
+        var registertime = "${sessionScope.thisUser.registertime}";
+        // var registertime ='2019/05/01 00:00:00';
         var date1= new Date();  //开始时间
-        var date2 = registertime.split('-').join('/');    //结束时间
+        var date2 = registertime.split('/').join('-');    //结束时间
         var date3 = date1.getTime() - new Date(date2).getTime();   //时间差的毫秒数
         //计算出相差天数
         var days=Math.floor(date3/(24*3600*1000));

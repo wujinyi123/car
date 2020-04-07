@@ -40,10 +40,40 @@
     <div class="touxiang">
         <a href="javascript:;" class="tan" style="color: white;"> ${sessionScope.thisUser.uname}，欢迎您</a>
         <a href="javascript:;" class="tan"><span><img src="../img/xiaoyanzi.jpeg" alt="" class="pic2"></span></a>
+        <a href="Login.jsp" style="color: red; text-decoration:none;cursor: pointer">
+            <div class="dropOutBox">
+                <span>注销账号</span>
+                <i class="glyphicon glyphicon-off">
+                </i>
+            </div>
+        </a>
     </div>
 </div>
 <!-- 固定导航栏 -->
 <script>
+    // 跳转权限
+    function jump(){
+        var unumber = "${sessionScope.thisUser.unumber}";
+        var flag = "${sessionScope.thisUser.flag}"
+        if(unumber==null || unumber=='' ){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">您未登录</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+        if(flag=='0' || flag == 0){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">无权访问</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+    }
+    jump();
+
     $(window).scroll(function(){
         var h=$(window).scrollTop();
         if(h>=100){
@@ -60,11 +90,11 @@
 <div class="left-nav">
     <ul>
         <a href="#"><li class="nav-span glyphicon glyphicon-chevron-up" title='返回顶部'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-thumbs-up" title='用户反馈'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-comment" title='社区'></li></a>
-        <a href="javascript:;" class="tan"><li class="nav-span glyphicon glyphicon-user" title='个人中心'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-list-alt" title='订单'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-signal" title='数据'></li></a>
+        <a href="index.jsp"><li class="nav-span glyphicon glyphicon-home" title='首页'></li></a>
+        <a href="rentalOnline.jsp"><li class="nav-span glyphicon glyphicon-shopping-cart" title='在线租车'></li></a>
+        <a href="Personal.jsp" class="tan"><li class="nav-span glyphicon glyphicon-user" title='个人中心'></li></a>
+        <a href="userOrders.jsp"><li class="nav-span glyphicon glyphicon-list-alt" title='订单'></li></a>
+        <a href="carBrowsing.jsp"><li class="nav-span glyphicon glyphicon-signal" title='数据'></li></a>
     </ul>
 </div>
 
@@ -596,7 +626,7 @@
         </div>
         <div class="back">
             <div>
-                <p class="p-left">丰田雷凌（自动/5座	）</p>
+                <p class="p-left">丰田雷凌（自动/5座）</p>
                 <p>全新换代雷凌是TNGA架构下的GA-C平台打造的产品，除了外观的变化之外，内饰，底盘操控和安全，智能等全方面都做了升级。2019上海车展上，广汽丰田全新换代雷凌正式开始预售，并已于5月20日晚在乌镇正式上市。 新车目前共推出了搭载1.2T涡轮增压发动机和1.8L混合动力系统两种动力的共计10款车型，售价区间为11.58-15.28万元。</p>
                 <button class="button">了解更多</button>
             </div>

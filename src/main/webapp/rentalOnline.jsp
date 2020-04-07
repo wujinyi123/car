@@ -40,10 +40,40 @@
     <div class="touxiang">
         <a href="javascript:;" style="color: white;"> ${sessionScope.thisUser.uname}，欢迎您</a>
         <a href="javascript:;"><span><img src="../img/xiaoyanzi.jpeg" alt="" class="pic2"></span></a>
+        <a href="Login.jsp" style="color: red; text-decoration:none;cursor: pointer">
+            <div class="dropOutBox">
+                <span>注销账号</span>
+                <i class="glyphicon glyphicon-off">
+                </i>
+            </div>
+        </a>
     </div>
 </div>
 <!-- 固定导航栏 -->
 <script>
+    // 跳转权限
+    function jump(){
+        var unumber = "${sessionScope.thisUser.unumber}";
+        var flag = "${sessionScope.thisUser.flag}"
+        if(unumber==null || unumber=='' ){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">您未登录</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+        if(flag=='0' || flag == 0){
+            layui.use('layer', function () {
+                layui.layer.alert('<span style="font-size:16px;">无权访问</span>', {icon: 2});
+            });
+            setTimeout(function () {
+                window.location.href="Login.jsp";
+            },500)
+        }
+    }
+    jump();
+
     $(window).scroll(function(){
         var h=$(window).scrollTop();
         if(h>=100){
@@ -60,14 +90,13 @@
 <div class="left-nav">
     <ul>
         <a href="#"><li class="nav-span glyphicon glyphicon-chevron-up" title='返回顶部'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-thumbs-up" title='用户反馈'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-comment" title='社区'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-user" title='个人中心'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-list-alt" title='订单'></li></a>
-        <a href="javascript:;"><li class="nav-span glyphicon glyphicon-signal" title='数据'></li></a>
+        <a href="index.jsp"><li class="nav-span glyphicon glyphicon-home" title='首页'></li></a>
+        <a href="rentalOnline.jsp"><li class="nav-span glyphicon glyphicon-shopping-cart" title='在线租车'></li></a>
+        <a href="Personal.jsp" class="tan"><li class="nav-span glyphicon glyphicon-user" title='个人中心'></li></a>
+        <a href="userOrders.jsp"><li class="nav-span glyphicon glyphicon-list-alt" title='订单'></li></a>
+        <a href="carBrowsing.jsp"><li class="nav-span glyphicon glyphicon-signal" title='数据'></li></a>
     </ul>
 </div>
-
 <!-- 搜索栏 -->
 <form action="" id="form1">
     <div class="sousuolan">
@@ -155,6 +184,7 @@
 <script src="js/datedropper.min.js"></script>
 <script src="js/timedropper.min.js"></script>
 <script>
+
     $(function() {
         var html = "";
         var province_idx;
