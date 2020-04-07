@@ -22,9 +22,9 @@
 <div class="wel" id="git"></div>
 <!-- 头部 -->
 <div class="header">
-    <div class="logo"><img src="../img/logo.jpg" alt=""></div>
+    <div class="logo"><img src="../img/logo22.jpg" alt=""></div>
     <div class="header2">
-        <div class="spann1">Car</div>
+        <div class="spann1"></div>
         <!-- 导航栏 -->
         <nav class="nav">
             <li class="li1 col-md-2"><a href="#"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
@@ -91,6 +91,16 @@
     </div>
 </div>
 <script type="text/javascript">
+    // 跳转权限
+    function jump(){
+        var a = ${sessionScope.thisUser};
+        if(a==null){
+            window.location.href="Login.jsp";
+        }
+    }
+    jump();
+
+    // 轮播图
     var $a=$(".buttons a");
     var $s=$(".buttons .a-span");
     var $v=$(".zhibo video")

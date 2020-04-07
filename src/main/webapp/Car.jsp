@@ -23,7 +23,7 @@
 <div class="PublicHead clearfix">
     <div class="leftBox clearfix">
         <div class="companyLogo">
-            <img src="../img/logo.jpg" alt="">
+            <img src="../img/logo22.jpg" alt="">
         </div>
 
         <div class="companyText">

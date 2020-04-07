@@ -27,9 +27,9 @@
 <div class="wel" id="git"></div>
 <!-- 头部 -->
 <div class="header">
-    <div class="logo"><img src="../img/logo.jpg" alt=""></div>
+    <div class="logo"><img src="../img/logo22.jpg" alt=""></div>
     <div class="header2">
-        <div class="spann1">Car</div>
+        <div class="spann1"></div>
         <!-- 导航栏 -->
         <nav class="nav">
             <li class="li1 col-md-2"><a href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
@@ -89,8 +89,7 @@
 <script>
     // 预约订单显示
     function userOrders(){
-        var unumber = '3';
-        <%--var unumber = ${sessionScope.thisUser.unumber};--%>
+        var unumber = ${sessionScope.thisUser.unumber};
         $.ajax({
             type: "POST",
             url: "/order/userOrders?unumber="+unumber,

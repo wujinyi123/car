@@ -25,9 +25,9 @@
 <body>
 <!-- 头部 -->
 <div class="header">
-    <div class="logo"><img src="../img/logo.jpg" alt=""></div>
+    <div class="logo"><img src="../img/logo22.jpg" alt=""></div>
     <div class="header2">
-        <div class="spann1" style="color: white;">Car</div>
+        <div class="spann1" style="color: white;"></div>
         <!-- 导航栏 -->
         <nav class="nav row">
             <li class="li1 col-md-2"><a href="index.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>

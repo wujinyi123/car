@@ -18,8 +18,8 @@
     <div class="content">
         <div class="p_head">
             <!-- 头背景 -->
-            <div class="banner-back container">
-                <div class="head"><img src="../img/logo.jpg" alt="">
+            <div class="banner-back containe">
+                <div class="head"><img src="../img/logo22.jpg" alt="">
                 </div>
                 <div class="title1">
                     <div class="weather">

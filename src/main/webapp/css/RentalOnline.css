@@ -36,8 +36,7 @@ body{
   height: 120px;
   background-size:100% 100%;
   border: 1px solid #00F7DE;
-  background-color: #2b2b3885;
-  /*background-image: url("../img/backwidth3.jpg");*/
+  background-image: url("../img/CARQ.png");
 }
 .header .logo{
   margin-left: 30px;
@@ -92,7 +91,7 @@ body{
 .nav{
   width: 92%;
   height: 40px;
-  background-color: #00F7DE;
+  background-color: #a3b7b500;
   margin: 0 auto;
   z-index: 100;
 }
@@ -102,7 +101,8 @@ body{
 .nav li a{
   text-decoration: none;
   text-align: center;
-  color: #2F4056;
+  color: white;
+  font-weight: bold;
 }
 .nav a:hover{
   color: skyblue;
