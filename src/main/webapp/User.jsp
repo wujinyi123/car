@@ -77,7 +77,6 @@
             <div class="InquireTableBox">
                 <iframe allowtransparency="true" frameborder="0" width="180" height="36" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=0&v=0&d=3&bd=0&k=&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=71267&w=180&h=36&align=center"></iframe>
                 <!--查询到的表格-->
-
                 <div class="InquireSelectTable">
                     <form class="layui-form" method="POST" id="examForm">
                         <div class="layui-inline">
@@ -112,15 +111,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label"></label>
-                            <div class="layui-input-block">
+                        <div class="layui-inline" style="margin-bottom: 10px;margin-left: 20px;">
+                            <div>
                                 <button class="layui-btn layui-btn-warm" lay-submit lay-filter="formUsers">查询</button>
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label"></label>
-                            <div class="layui-input-block" >
+                        <div class="layui-inline" style="margin-bottom: 10px;margin-left: 20px;">
+                            <div>
                                 <input type="button" class="layui-btn layui-btn-normal" onclick="addFloat()" value="添加"></input>
                             </div>
                         </div>

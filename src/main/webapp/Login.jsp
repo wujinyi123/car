@@ -37,7 +37,7 @@
                     用户账号:
                 </div>
                 <div class="col-xs-6 login_usernameInput">
-                    <input type="text" name="accountnumber" id="name" value="15521688071" placeholder="请输入账号"  onBlur="javascript:ok_or_errorBylogin(this)" />
+                    <input type="text" name="accountnumber" id="name" value="" placeholder="请输入账号"  onBlur="javascript:ok_or_errorBylogin(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -51,7 +51,7 @@
                     用户密码:
                 </div>
                 <div class="col-xs-6">
-                    <input type="password" name="password" id="psd" value="123456" placeholder="请输入密码" onBlur="javascript:ok_or_errorBylogin(this)" />
+                    <input type="password" name="password" id="psd" value="" placeholder="请输入密码" onBlur="javascript:ok_or_errorBylogin(this)" />
                 </div>
                 <div class="col-xs-1 ok_gou">
                     √
@@ -66,8 +66,8 @@
                 </div>
                 <div class="col-xs-6">
                     <select name="flag" style="width: 285px;" id="flag_l" >
-                        <option value="0" selected>管理员</option>
-                        <option value="1">普通用户</option>
+                        <option value="0" >管理员</option>
+                        <option value="1" selected>普通用户</option>
                     </select>
                 </div>
             </div>

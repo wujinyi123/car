@@ -283,7 +283,7 @@ body{
 .lunbo{
   width: 70%;
   height: 135px;
-  border: 3px solid black;
+  /*border: 1px solid black;*/
   overflow: hidden;
   margin:0px auto;
   margin-top: 20px;
@@ -298,14 +298,15 @@ body{
 .lunbo .lunbo-kuang li{
   width: 200px;
   height: 130px;
-  border: 1px solid black;
+  border: 1px solid white;
   font-weight: bold;
   text-align: center;
   color: white;
   /* margin-top: 5px; */
   display: inline-block;
-  background-color: #666;
+  background-color: #4E5465;
   transition: 1s;
+  opacity: 0.8;
 }
 .lunbo .lunbo-kuang li:hover{
   background-color:#333;
@@ -444,11 +445,11 @@ body{
     margin: 0px auto;
     align-items: center;
     width: 70%;
-    height: 550px;
+    height: 600px;
     flex-wrap: wrap;
     overflow-y: scroll;
     padding: 0px;
-    border: 1px solid black;
+    border: 1px solid white;
     background-color: white;
     opacity: 0.9;
 }
